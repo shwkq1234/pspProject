@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_position_update" width="400" height="400" titletext="New Form" onload="Form_position_update_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="400">
+        <Static id="lb_position_update" taborder="0" text="직책 수정" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_position_update_center" taborder="1" left="10" top="50" width="380" height="293" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_position_no" taborder="2" text="직책코드" left="34" top="74" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_position_no" taborder="3" left="115" top="72" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_position_no_check" taborder="4" text="중복확인" left="310" top="72" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_position_no_check_onclick"/>
+        <Static id="lb_position_name" taborder="5" text="직책명" left="34" top="127" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_position_name" taborder="6" left="115" top="125" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_position_use" taborder="7" text="사용여부" left="34" top="180" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Combo id="cb_position_use" taborder="8" left="115" top="178" width="180" height="35" innerdataset="gb_use" datacolumn="use_name" codecolumn="use_name"/>
+        <Static id="lb_position_note" taborder="9" text="비고" left="34" top="233" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_position_note" taborder="10" left="115" top="231" width="255" height="97" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_position_update" taborder="11" text="수정" left="290" top="356" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_position_update_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+var objApp = nexacro.getApplication();
+var objDs = objApp.gb_positionList;
+	
+this.Form_position_update_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	alert("자식창_선택한 직책번호 : " + objDs.getColumn(0,1));
+	this.edit_position_no.set_value(objDs.getColumn(0,1));
+	this.edit_position_name.set_value(objDs.getColumn(0,2));
+	this.cb_position_use.set_value(objDs.getColumn(0,3));
+	this.edit_position_note.set_value(objDs.getColumn(0,4));
+};
+
+this.btn_position_no_check_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("직책코드 중복(수정)검사");
+	var p_positionNo = this.edit_position_no.value;
+	var p_beforePositionNo = objDs.getColumn(0,1);
+	if(p_positionNo == undefined || p_positionNo == "") {
+		alert("수정할 직책코드를 입력하시오");
+		return;
+	}
+	this.transaction("positionUCheck" ,"SvcURL::hr/positionUCheck.psp","" ,"" ,"p_positionNo="+p_positionNo+" p_beforePositionNo="+p_beforePositionNo ,"fn_callback");
+};
+
+var check = 0;
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	alert("fn_callback호출 성공"+svcID+","+errCD);
+	alert(errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		check = 0;
+		return; 
+	}
+	if(svcID == "positionUCheck"){
+		//this.alert("positionUCheck Success");
+		check = 1;
+	}
+	if(svcID == "positionUpdate"){
+		//this.alert("positionUpdate Success");
+		check = 0;
+	}
+}
+
+this.btn_position_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("직책수정버튼 클릭");
+	var p_beforePositionNo = objDs.getColumn(0,1);
+	var p_afterPositionNo = this.edit_position_no.value;
+	var p_positionName = this.edit_position_name.value;
+	var p_positionUse = this.cb_position_use.value;
+	var p_positionNote = this.edit_position_note.value;
+	if(p_afterPositionNo == undefined || p_afterPositionNo =="") {
+		alert("직책코드를 입력하시오");
+		return;
+	}
+	if(p_positionName == undefined || p_positionName == "") {
+		alert("직책명을 입력하시오");
+		return;
+	}
+	if(p_positionUse == undefined || p_positionUse == "") {
+		alert("사용여부를 선택하시오");
+		return;
+	}
+	if(check == 0) {
+		alert("직책코드 중복검사를 하시오.");
+		return;
+	}
+	this.transaction("positionUpdate" ,"SvcURL::hr/positionUpdate.psp","" ,"ds_positionList=out_positionList" ,"p_beforePositionNo="+p_beforePositionNo+" p_positionName="+p_positionName+" p_afterPositionNo="+p_afterPositionNo+" p_positionUse="+p_positionUse+" p_positionNote="+p_positionNote ,"fn_callback");
+
+};
+]]></Script>
+  </Form>
+</FDL>

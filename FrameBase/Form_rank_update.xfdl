@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_rank_update" width="400" height="400" titletext="New Form" onload="Form_rank_update_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="400">
+        <Static id="lb_rank_update" taborder="0" text="직급 수정" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_rank_update_center" taborder="1" left="10" top="50" width="380" height="293" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_rank_no" taborder="2" text="직급코드" left="34" top="74" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_rank_no" taborder="3" left="115" top="72" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_rank_no_check" taborder="4" text="중복확인" left="310" top="72" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_rank_no_check_onclick"/>
+        <Static id="lb_rank_name" taborder="5" text="직급명" left="34" top="127" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_rank_name" taborder="6" left="115" top="125" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_rank_use" taborder="7" text="사용여부" left="34" top="180" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Combo id="cb_rank_use" taborder="8" left="115" top="178" width="180" height="35" innerdataset="gb_use" datacolumn="use_name" codecolumn="use_name"/>
+        <Static id="lb_rank_note" taborder="9" text="비고" left="34" top="233" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_rank_note" taborder="10" left="115" top="231" width="255" height="97" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_rank_update" taborder="11" text="수정" left="290" top="356" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_rank_update_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_rank_no_check_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("직급코드 중복검사");
+	var p_rankNo = this.edit_rank_no.value; //ds_deptList=out_deptList
+	if(p_rankNo == undefined || p_rankNo == "") {
+		alert("직급코드를 입력하시오");
+		return;
+	}
+	this.transaction("rankCheck" ,"SvcURL::hr/rankCheck.psp","" ,"" ,"p_rankNo="+p_rankNo ,"fn_callback");
+};
+
+this.Form_rank_update_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//폼이 로드된 후 발생하는 이벤트
+	//var nRow = this.Dataset00.findRow("chk", true);
+	//var sSalayNo = this.Dataset00.getColumn(nRow, "salay_no");
+
+	this.objApp = nexacro.getApplication();
+	this.objApp.gb_rankNo
+	alert("자식창_선택한 직급번호 : " + this.objApp.gb_rankNo);
+	this.edit_rank_no.set_value(this.objApp.gb_rankNo);
+	this.edit_rank_name.set_value(this.objApp.gb_rankName);
+	this.cb_rank_use.set_value(this.objApp.gb_rankUse);
+	this.edit_rank_note.set_value(this.objApp.gb_rankNote);
+};
+
+var check = 0;
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	//alert("fn_callback호출 성공"+svcID+","+errCD);
+	//alert(errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		check = 0;
+		return; 
+	}
+	if(svcID == "rankCheck"){
+		//this.alert("rankCheck Success");
+		check = 1;
+		//this.go("FrameBase::Form_emp.xfdl");
+	}
+	if(svcID == "rankUpdate"){
+		//this.alert("rankUpdate Success");
+		check = 0;
+		//this.go("FrameBase::Form_emp.xfdl");
+	}
+}
+
+this.btn_rank_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("직급수정버튼 클릭");
+	var p_beforeRankNo = this.objApp.gb_rankNo;
+	var p_afterRankNo = this.edit_rank_no.value;
+	var p_rankName = this.edit_rank_name.value;
+	var p_rankUse = this.cb_rank_use.value;
+	var p_rankNote = this.edit_rank_note.value;
+	if(p_afterRankNo == undefined || p_afterRankNo =="") {
+		alert("직급코드를 입력하시오");
+		return;
+	}
+	if(p_rankName == undefined || p_rankName == "") {
+		alert("직급명을 입력하시오");
+		return;
+	}
+	if(p_rankUse == undefined || p_rankUse == "") {
+		alert("사용여부를 선택하시오");
+		return;
+	}
+	if(check == 0) {
+		alert("직급코드 중복검사를 하시오.");
+		return;
+	}
+	
+	this.transaction("rankUpdate" ,"SvcURL::hr/rankUpdate.psp","" ,"ds_positionList=out_positionList" ,"p_beforeRankNo="+p_beforeRankNo+" p_rankName="+p_rankName+" p_afterRankNo="+p_afterRankNo+" p_rankUse="+p_rankUse+" p_rankNote="+p_rankNote ,"fn_callback");
+	//this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

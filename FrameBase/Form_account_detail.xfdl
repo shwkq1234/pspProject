@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_account_detail" width="770" height="620" titletext="New Form">
+    <Layouts>
+      <Layout height="620" mobileorientation="landscape" width="770">
+        <Static id="lb_account_detail" taborder="0" text="거래처 상세보기" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_account_detail_center" taborder="1" left="10" top="50" width="750" height="516" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_account_no" taborder="2" text="거래처코드" left="31" top="133" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_no" taborder="3" left="142" top="131" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_name" taborder="4" text="거래처명" left="424" top="133" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_name" taborder="5" left="535" top="131" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_Bnum" taborder="6" text="사업자등록번호" left="31" top="187" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_Bnum" taborder="7" left="142" top="185" width="180" height="35" inputtype="normal"/>
+        <Static id="lb_account_rep" taborder="8" text="대표자" left="424" top="187" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_rep" taborder="9" left="535" top="185" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_num" taborder="10" text="전화번호" left="31" top="241" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_num" taborder="11" left="142" top="239" width="180" height="35" inputtype="normal"/>
+        <Static id="lb_crops_no" taborder="12" text="농산물 코드" left="424" top="241" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_crops_no" taborder="13" left="535" top="239" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_crops_no_search" taborder="14" left="716" top="241" width="30" height="30" border="0px none transparent" background="transparent" icon="url('imagerc::search.png')" text="" onclick="btn_crops_no_search_onclick"/>
+        <Static id="lb_address" taborder="15" text="주소" left="31" top="293" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Static id="lb_zipcode" taborder="16" text="우편번호" left="142" top="293" width="59" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_zipcode" taborder="17" left="221" top="291" width="100" height="35" visible="true" inputtype="normal"/>
+        <Button id="btn_zipcode_search" taborder="18" text="찾기" left="326" top="291" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_zipcode_search_onclick"/>
+        <Edit id="edit_address" taborder="19" left="142" top="342" width="455" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_bank" taborder="20" text="은행명" left="31" top="398" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_bank" taborder="21" left="142" top="396" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_accholder" taborder="22" text="예금주명" left="424" top="398" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_accholder" taborder="23" left="535" top="396" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_ano" taborder="24" text="계좌번호" left="31" top="452" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_ano" taborder="25" left="142" top="450" width="300" height="35" inputtype="normal"/>
+        <Static id="lb_emp_name" taborder="26" text="담당자" left="31" top="506" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_name" taborder="27" left="142" top="504" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_email" taborder="28" text="담당자 Email" left="424" top="506" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_email" taborder="29" left="535" top="504" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_account_update" taborder="30" text="수정" left="660" top="576" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+        <PopupDiv id="popdiv_crops_no_search" visible="false" left="797" top="270" width="400" height="400" background="#ffffff">
+          <Layouts>
+            <Layout>
+              <Static id="lb_crops_no_search" taborder="0" text="농산물 코드 조회" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+              <Button id="btn_crops_no_search_close" taborder="1" left="362" top="5" width="30" height="30" background="transparent" border="0px none transparent" icon="url('imagerc::close.png')" onclick="popdiv_crops_no_search_btn_crops_no_search_close_onclick"/>
+              <Static id="lb_crops_no_search_center" taborder="2" left="10" top="58" width="380" height="280" background="#EDEFF3" border="0px none transparent" text=""/>
+              <Edit id="edit_crops_name_search" taborder="3" left="124" top="78" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+              <Static id="lb_crops_name" taborder="4" text="농산물명" left="23" top="80" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+              <Button id="btn_crops_name_search" taborder="5" text="검색" left="320" top="78" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+              <Button id="btn_crops_no_add" taborder="6" text="등록" left="290" top="353" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+              <Grid id="grid_cropsList" taborder="7" left="23" top="125" width="357" height="205" binddataset="ds_cropsList">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="127"/>
+                      <Column size="128"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="농산물코드"/>
+                      <Cell col="1" text="농산물분류"/>
+                      <Cell col="2" text="농산물명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:CROPS_NO"/>
+                      <Cell col="1" text="bind:CROPS_S"/>
+                      <Cell col="2" text="bind:CROPS_M"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+        <Static id="lb_account_type" taborder="31" text="구분" left="31" top="80" width="120" height="30"/>
+        <Combo id="cb_account_type" taborder="32" left="142" top="78" width="100" height="35"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_cropsList">
+        <ColumnInfo>
+          <Column id="CROPS_NO" type="STRING" size="256"/>
+          <Column id="CROPS_S" type="STRING" size="256"/>
+          <Column id="CROPS_M" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CROPS_NO">A001</Col>
+            <Col id="CROPS_S"/>
+            <Col id="CROPS_M">고구마</Col>
+          </Row>
+          <Row>
+            <Col id="CROPS_NO">B001</Col>
+            <Col id="CROPS_S"/>
+            <Col id="CROPS_M">감자</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_account_typeList">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_TYPE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ACCOUNT_TYPE">매출</Col>
+            <Col id="CODE">0</Col>
+          </Row>
+          <Row>
+            <Col id="ACCOUNT_TYPE">매입</Col>
+            <Col id="CODE">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_zipcode_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("우편번호 조회");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_zipcode"
+	                  , 200//x좌표
+					  , 100//y좌표
+					  , 402//가로
+					  , 420//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_zipcode.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();	
+};
+
+this.btn_crops_no_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.popdiv_crops_no_search.trackPopup(400,160,400,400);
+};
+
+this.popdiv_crops_no_search_btn_crops_no_search_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.popdiv_crops_no_search.closePopup("Close");	
+};
+
+]]></Script>
+  </Form>
+</FDL>

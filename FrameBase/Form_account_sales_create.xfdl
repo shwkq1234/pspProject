@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_account_sales_create" width="770" height="620" titletext="New Form">
+    <Layouts>
+      <Layout height="620" mobileorientation="landscape" width="770">
+        <Static id="lb_account_sales_create" taborder="0" text="매출 거래처 등록" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_account_sales_create_center" taborder="1" left="10" top="50" width="750" height="516" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_account_no" taborder="2" text="거래처코드" left="31" top="80" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_no" taborder="3" left="142" top="77" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_name" taborder="4" text="거래처명" left="424" top="80" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_name" taborder="5" left="535" top="77" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_Bnum" taborder="6" text="사업자등록번호" left="31" top="140" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_Bnum" taborder="7" left="142" top="138" width="180" height="35" inputtype="normal"/>
+        <Static id="lb_account_rep" taborder="8" text="대표자" left="424" top="140" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_rep" taborder="9" left="535" top="138" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_num" taborder="10" text="전화번호" left="31" top="201" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_num" taborder="11" left="142" top="199" width="180" height="35" inputtype="normal"/>
+        <Static id="lb_address" taborder="12" text="주소" left="31" top="262" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Static id="lb_zipcode" taborder="13" text="우편번호" left="142" top="262" width="59" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_zipcode" taborder="14" left="221" top="260" width="100" height="35" visible="true" inputtype="normal"/>
+        <Button id="btn_zipcode_search" taborder="15" text="찾기" left="326" top="260" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_zipcode_search_onclick"/>
+        <Edit id="edit_address" taborder="16" left="142" top="321" width="455" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_bank" taborder="17" text="은행명" left="31" top="384" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_bank" taborder="18" left="142" top="382" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_accholder" taborder="19" text="예금주명" left="424" top="384" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_accholder" taborder="20" left="535" top="382" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_ano" taborder="21" text="계좌번호" left="31" top="445" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_ano" taborder="22" left="142" top="443" width="300" height="35" inputtype="normal"/>
+        <Static id="lb_emp_name" taborder="23" text="담당자" left="31" top="506" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_name" taborder="24" left="142" top="504" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_email" taborder="25" text="담당자 Email" left="424" top="506" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_email" taborder="26" left="535" top="504" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_account_sales_create" taborder="27" text="등록" left="660" top="576" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_zipcode_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("우편번호 조회");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_zipcode"
+	                  , 200//x좌표
+					  , 100//y좌표
+					  , 402//가로
+					  , 420//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_zipcode.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();	
+};
+]]></Script>
+  </Form>
+</FDL>

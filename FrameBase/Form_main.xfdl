@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_main" width="1280" height="720" titletext="New Form" onload="Form_main_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Static id="lb_main" taborder="0" left="0" top="0" width="1280" height="50" background="#242d40"/>
+        <Menu id="menu_department" taborder="1" left="309" top="0" width="328" height="50" innerdataset="ds_department" captioncolumn="caption" idcolumn="id" levelcolumn="level" onmenuclick="menu_department_onmenuclick"/>
+        <ImageViewer id="img_employee" taborder="2" left="1000" top="0" width="30" height="50" enableevent="false" image="url('imagerc::employee.png')" background="transparent" border="0px none transparent" stretch="none"/>
+        <Static id="lb_emp" taborder="3" text="사원명/부서명" left="1035" top="0" width="145" height="50" color="#ffffff" textAlign="left" verticalAlign="middle"/>
+        <Button id="btn_info_upd" taborder="4" left="1190" top="10" width="32" height="32" icon="url('imagerc::emp_info_upd.png')" background="transparent" border="0px none transparent" onclick="btn_info_upd_onclick"/>
+        <Button id="btn_logout" taborder="5" left="1230" top="9" width="32" height="32" icon="url('imagerc::emp_logout.png')" background="transparent" border="0px none transparent" onclick="btn_logout_onclick"/>
+        <Div id="div_main" taborder="6" left="0" top="50" width="1280" height="670">
+          <Layouts>
+            <Layout>
+              <ImageViewer id="img_logo_center" taborder="7" left="350" top="120" width="577" height="324" image="url('imagerc::logo1.png')" imagealign="center middle" background="transparent" border="0px none transparent" stretch="none"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <ImageViewer id="ImageViewer00" taborder="7" left="70" top="10" width="190" height="30" background="url('imagerc::logo2-2.png') no-repeat center bottom" border="0px none transparent"/>
+        <ImageViewer id="ImageViewer00_00" taborder="8" left="24" top="5" width="46" height="41" background="url('imagerc::logo2-1.png') no-repeat center center" border="0px none transparent"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_department">
+        <ColumnInfo>
+          <Column id="caption" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="caption">인사관리</Col>
+            <Col id="level">0</Col>
+          </Row>
+          <Row>
+            <Col id="caption">사원 관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">부서 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_dept</Col>
+          </Row>
+          <Row>
+            <Col id="caption">직급 조회</Col>
+            <Col id="id">row_rank</Col>
+            <Col id="level">2</Col>
+          </Row>
+          <Row>
+            <Col id="caption">직책 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_position</Col>
+          </Row>
+          <Row>
+            <Col id="caption">사원 조회 </Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_emp</Col>
+          </Row>
+          <Row>
+            <Col id="caption">근태관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">근태 항목 조회</Col>
+            <Col id="id">row_attendanceRecord</Col>
+            <Col id="level">2</Col>
+          </Row>
+          <Row>
+            <Col id="caption">근태 내역 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_attendance_emp</Col>
+          </Row>
+          <Row>
+            <Col id="caption">근태 신청 조회</Col>
+            <Col id="id">row_attendance_mgr</Col>
+            <Col id="level">2</Col>
+          </Row>
+          <Row>
+            <Col id="caption">급여관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">급여 내역 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_sal</Col>
+          </Row>
+          <Row>
+            <Col id="caption">영업관리</Col>
+            <Col id="level">0</Col>
+          </Row>
+          <Row>
+            <Col id="caption">거래처 관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">거래처 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_account</Col>
+          </Row>
+          <Row>
+            <Col id="caption">거래내역 관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">거래내역 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_deal</Col>
+          </Row>
+          <Row>
+            <Col id="caption">재고관리</Col>
+            <Col id="level">0</Col>
+          </Row>
+          <Row>
+            <Col id="caption">품목 관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">품목 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_crops</Col>
+          </Row>
+          <Row>
+            <Col id="caption">지점 관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">지점 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_branch</Col>
+          </Row>
+          <Row>
+            <Col id="caption">입고/출고 관리</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">입고/출고 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_inout</Col>
+          </Row>
+          <Row>
+            <Col id="level">1</Col>
+            <Col id="caption">재고관리</Col>
+          </Row>
+          <Row>
+            <Col id="caption">재고 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_stock</Col>
+          </Row>
+          <Row>
+            <Col id="caption">결재관리</Col>
+            <Col id="level">0</Col>
+          </Row>
+          <Row>
+            <Col id="caption">개인함</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">기안함 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_approval_emp</Col>
+          </Row>
+          <Row>
+            <Col id="caption">임시 보관함</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_approval_emp_delay</Col>
+          </Row>
+          <Row>
+            <Col id="caption">결재함</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="caption">미결함 조회</Col>
+            <Col id="level">2</Col>
+            <Col id="id">row_approval_mgr_pending</Col>
+          </Row>
+          <Row>
+            <Col id="caption">기결함 조회</Col>
+            <Col id="id">row_approval_mgr_decide</Col>
+            <Col id="level">2</Col>
+          </Row>
+          <Row>
+            <Col id="caption">반려함 조회</Col>
+            <Col id="id">row_approval_mgr_refuse</Col>
+            <Col id="level">2</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.menu_department_onmenuclick = function(obj:nexacro.Menu,e:nexacro.MenuClickEventInfo)
+{
+	/* 1. 인사관리 - 사원관리 */
+	if(e.id == "row_emp"){//사원조회
+		this.div_main.set_url("FrameBase::Form_emp.xfdl");
+	}
+	else if(e.id == "row_dept"){//부서조회
+		this.div_main.set_url("FrameBase::Form_dept.xfdl");
+	}
+	else if(e.id == "row_rank"){//직급조회
+		this.div_main.set_url("FrameBase::Form_rank.xfdl");
+	}
+	else if(e.id == "row_position"){//직책조회
+		this.div_main.set_url("FrameBase::Form_position.xfdl");
+	}
+	/* 1. 인사관리 - 근태관리 */
+	else if(e.id == "row_attendanceRecord"){//근태항목조회
+		this.div_main.set_url("FrameBase::Form_attendanceRecord.xfdl");
+	}
+	else if(e.id == "row_attendance_emp"){//근태내역조회 (권한:일반사원)
+		this.div_main.set_url("FrameBase::Form_attendance_emp.xfdl");
+	}
+	else if(e.id == "row_attendance_mgr"){//근태신청조회 (권한:관리자)
+		this.div_main.set_url("FrameBase::Form_attendance_mgr.xfdl");
+	}	
+	/* 1. 인사관리 - 급여관리 */
+	else if(e.id == "row_sal"){//급여내역조회
+		this.div_main.set_url("FrameBase::Form_sal.xfdl");
+	}
+	
+	/* 2. 영업관리 - 거래처관리 */
+	else if(e.id == "row_account"){//거래처조회
+		this.div_main.set_url("FrameBase::Form_account.xfdl");
+	}
+	/* 2. 영업관리 - 거래내역관리 */
+	else if(e.id == "row_deal"){//거래내역조회
+		this.div_main.set_url("FrameBase::Form_deal.xfdl");
+	}
+	
+	/* 3. 재고관리 - 품목관리 */
+	else if(e.id == "row_crops"){//품목조회
+		this.div_main.set_url("FrameBase::Form_crops.xfdl");
+	}
+	/* 3. 재고관리 - 지점관리 */
+	else if(e.id == "row_branch"){//지점조회
+		this.div_main.set_url("FrameBase::Form_branch.xfdl");
+	}	
+	/* 3. 재고관리 - 입고/출고관리 */	
+	else if(e.id == "row_inout"){//입고/출고조회
+		this.div_main.set_url("FrameBase::Form_inout.xfdl");
+	}
+	/* 3. 재고관리 - 재고관리 */	
+	else if(e.id == "row_stock"){//재고조회
+		this.div_main.set_url("FrameBase::Form_stock.xfdl");
+	}
+	
+	/* 4. 결재관리 - 개인함 (권한:일반사원)*/
+	else if(e.id == "row_approval_emp"){//기안함
+		this.div_main.set_url("FrameBase::Form_approval_emp.xfdl");
+	}
+	else if(e.id == "row_approval_emp_delay"){//임시보관함
+		this.div_main.set_url("FrameBase::Form_approval_emp_delay.xfdl");
+	}
+	/* 4. 결재관리 - 결재함 (권한:관리자) */
+	else if(e.id == "row_approval_mgr_pending"){//미결함
+		this.div_main.set_url("FrameBase::Form_approval_mgr_pending.xfdl");
+	}
+	else if(e.id == "row_approval_mgr_decide"){//기결함
+		this.div_main.set_url("FrameBase::Form_approval_mgr_decide.xfdl");
+	}
+	else if(e.id == "row_approval_mgr_refuse"){//반려함
+		this.div_main.set_url("FrameBase::Form_approval_mgr_refuse.xfdl");
+	}
+	
+};
+
+this.btn_info_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//alert("정보변경");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_info"
+	                  , 320//x좌표
+					  , 100//y좌표
+					  , 442//가로
+					  , 460//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_info.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();
+};
+
+this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+	//var test ='';
+	//test = this.ds_rankList.getColumn(0,1);
+	//alert("test : " + test);
+	//getColumn의 row는 0부터 시작. col도 0부터 시작
+	//getColumn(row(int), "컬럼명") 방법1
+	//getColumn(row(int), col(int)) 방법2
+	//getColumn(row(int)) 방법3. 이때 컬럼은 0번째 인덱스로 고정되는 듯함.
+  
+	//alert(this.ds_test.getColumn(1,"t1")); //y1
+	//alert(this.ds_test.getColumn(0,"t1")); //t1
+	//alert(this.ds_test.getColumn(1,1)); //y2
+	//alert(this.ds_test.getColumn(0,1)); //t2
+	//alert(this.ds_test.getColumn(2,"t2")); //z2
+	//alert(this.ds_test.getColumn(0)); //t1
+	//alert(this.ds_test.getColumn(1)); //y1
+	//alert(this.ds_test.getColumn(2)); //z1
+
+this.Form_main_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var objApp = nexacro.getApplication();
+	var objDs = objApp.gb_login;
+	
+	//alert("사원이름 : " + objDs.getColumn(0,2)); // var로 선언한 변수명을 통해 데이터셋에 접근 가능.
+	//alert("부서이름 : " + objDs.getColumn(0,3));
+	this.lb_emp.set_text(objDs.getColumn(0,2) + "/" + objDs.getColumn(0,3));
+};
+]]></Script>
+  </Form>
+</FDL>

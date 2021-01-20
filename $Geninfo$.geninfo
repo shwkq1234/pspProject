@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <GenInfo version="1.1">
+    <Rule>
+      <ENV rule_version="1.05"/>
+      <ADL rule_version="1.14"/>
+      <FDL rule_version="1.04"/>
+      <XCSS rule_version="1.03"/>
+      <Script rule_version="1.02"/>
+    </Rule>
+    <Info project="C:\Users\min\Documents\카카오톡 받은 파일\psp_ver7(0119-수정)_boot\" generated="C:\Users\min\Documents\nexacro\17\outputs\psp_ver7(0116)_boot\"><File url="environment.xml" checksum="20210112165824" errormsg=""/><File url="typedefinition.xml" checksum="20210119160338" errormsg=""/><File url="appvariables.xml" checksum="20210118214046" errormsg=""/><File url="_resource_\_theme_\default\theme.xcss" checksum="20210112170316" errormsg=""/><File url="App_Desktop.xadl" checksum="20210112170244" errormsg=""/><File url="FrameBase\Form_approval_emp_draft.xfdl" checksum="20210119212542" errormsg=""/><File url="FrameBase\Form_account_detail.xfdl" checksum="20210119225830" errormsg=""/><File url="FrameBase\Form_account_purchase_create.xfdl" checksum="20210119225947" errormsg=""/><File url="FrameBase\Form_account_sales_create.xfdl" checksum="20210119230001" errormsg=""/><File url="FrameBase\Form_crops.xfdl" checksum="20210119230121" errormsg=""/><File url="FrameBase\Form_crops_create.xfdl" checksum="20210119230149" errormsg=""/><File url="FrameBase\Form_crops_update.xfdl" checksum="20210119230158" errormsg=""/><File url="FrameBase\Form_deal.xfdl" checksum="20210119230220" errormsg=""/><File url="FrameBase\Form_deal_detail.xfdl" checksum="20210119230231" errormsg=""/><File url="FrameBase\Form_deal_purchase_create.xfdl" checksum="20210119230246" errormsg=""/><File url="FrameBase\Form_deal_sales_create.xfdl" checksum="20210119230255" errormsg=""/><File url="FrameBase\Form_emp.xfdl" checksum="20210119230315" errormsg=""/><File url="FrameBase\Form_emp_create.xfdl" checksum="20210119230344" errormsg=""/><File url="FrameBase\Form_emp_detail.xfdl" checksum="20210119230401" errormsg=""/><File url="FrameBase\Form_inout.xfdl" checksum="20210119230437" errormsg=""/><File url="FrameBase\Form_inout_in_create.xfdl" checksum="20210119230447" errormsg=""/><File url="FrameBase\Form_inout_in_update.xfdl" checksum="20210119230514" errormsg=""/><File url="FrameBase\Form_inout_out_create.xfdl" checksum="20210119230530" errormsg=""/><File url="FrameBase\Form_inout_out_update.xfdl" checksum="20210119230547" errormsg=""/><File url="FrameBase\Form_sal_update.xfdl" checksum="20210119230621" errormsg=""/><File url="FrameBase\Form_stock.xfdl" checksum="20210119230635" errormsg=""/></Info>
+  </GenInfo>
+</root>

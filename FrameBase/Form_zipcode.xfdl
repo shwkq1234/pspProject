@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_zipcode" width="400" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="400">
+        <Static id="lb_zipcode" taborder="0" text="우편번호 조회" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_position_update_center" taborder="1" left="10" top="48" width="380" height="293" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_rposition_no" taborder="2" text="지번/도로명" left="24" top="69" width="106" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true" onclick="lb_rposition_no_onclick"/>
+        <Edit id="edit_position_no" taborder="3" left="120" top="67" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_search" taborder="4" text="검색" left="320" top="67" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_search_onclick"/>
+        <Button id="btn_close" taborder="5" text="닫기" left="290" top="356" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_close_onclick"/>
+        <Grid id="grid_zipcode" taborder="6" left="24" top="113" width="356" height="217" binddataset="ds_zipList" oncelldblclick="grid_zipcode_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="290"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="우편번호"/>
+                <Cell col="1" text="주소"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ZIP_CODE"/>
+                <Cell col="1" text="bind:ZIP_ADDRESS"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_zipList">
+        <ColumnInfo>
+          <Column id="ZIP_CODE" type="INT" size="256"/>
+          <Column id="ZIP_ADDRESS" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();	
+};
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var p_search = this.edit_position_no.value;
+	if(p_search == undefined || p_search == "") {
+		alert("지번/도로명를 입력하시오");
+		return;
+	}
+	this.transaction("zipSearch" ,"SvcURL::hr/zipSearch.psp","" ,"ds_zipList=out_zipList" ,"p_search="+p_search ,"fn_callback");
+};
+
+this.grid_zipcode_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	alert("test : " + this.ds_zipList.getColumn(e.row, 0));
+	//alert("test");
+	this.objApp = nexacro.getApplication();
+	this.objApp.gb_zipCode = this.ds_zipList.getColumn(e.row, 0);
+	this.objApp.gb_zipAddress = this.ds_zipList.getColumn(e.row, 1);
+	
+	var strData = this.objApp.gb_zipCode + "," + this.objApp.gb_zipAddress;
+	
+	this.close(strData);
+};
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	//alert("fn_callback호출 성공"+svcID+","+errCD);
+	alert(errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG);
+		return; 
+	}
+	if(svcID == "zipSearch"){
+		//this.alert("zipSearch Success");
+	}
+}]]></Script>
+  </Form>
+</FDL>

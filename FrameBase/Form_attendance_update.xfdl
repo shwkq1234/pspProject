@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_attendance_update" width="770" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="770">
+        <Static id="lb_attendance_update" taborder="0" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" text="근태 수정"/>
+        <Static id="lb_attendance_update_center" taborder="2" left="10" top="48" width="750" height="293" background="#edeff4" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 20px" textAlign="left" verticalAlign="middle" text=""/>
+        <Static id="lb_dept" taborder="1" text="부서명" left="35" top="70" width="70" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" height="30" onclick="lb_dept_onclick"/>
+        <Edit id="edit_dept" taborder="3" left="122" top="67" width="180" height="35"/>
+        <Static id="lb_emp_no" taborder="4" text="사원번호" left="34" top="134" width="70" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" height="30"/>
+        <Edit id="edit_emp_no" taborder="5" left="122" top="131" width="180" height="35"/>
+        <Static id="lb_emp_name" taborder="6" text="사원명" left="335" top="134" width="70" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" height="30"/>
+        <Edit id="edit_emp_name" taborder="7" left="423" top="131" width="180" height="35"/>
+        <Static id="lb_attendance_code" taborder="8" text="근태항목" left="34" top="198" width="70" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Combo id="combo_attendance_code" taborder="9" left="122" top="195" width="180" height="35"/>
+        <Static id="lb_date" taborder="10" text="기간" left="34" top="262" width="100" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" height="30"/>
+        <Calendar id="cal_start_date" taborder="11" left="122" top="259" width="180" height="35" type="normal"/>
+        <Static id="lb_date_center" taborder="12" text="~" left="307" top="264" width="23" height="30" font="normal 700 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="center"/>
+        <Calendar id="cal_end_date" taborder="13" left="335" top="261" width="180" height="35" type="normal" onchanged="cal_end_date_onchanged"/>
+        <Static id="lb_day" taborder="14" text="일수" left="560" top="262" width="100" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" height="30"/>
+        <Edit id="edit_day" taborder="15" left="648" top="259" width="100" height="35"/>
+        <Button id="btn_attendance_update" taborder="16" text="수정" left="660" top="356" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[/* 일자 구하기 이벤트 시작 */
+this.cal_end_date_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+	var fromDate = new Date();//시작일
+	var toDate = new Date();//종료일
+	var calDate;//시작일-종료일간의 일수 
+	var day = 1000*60*60*24;//하루를 밀리세컨드로 환산
+	//시작일에서 년|월|일 get 
+	fromDate.setFullYear(this.cal_start_date.getYear());
+	fromDate.setMonth(this.cal_start_date.getMonth()-1);
+	fromDate.setDate(this.cal_start_date.getDay());
+	//종료일에서 년|월|일 get 
+	toDate.setFullYear(this.cal_end_date.getYear());
+	toDate.setMonth(this.cal_end_date.getMonth()-1);
+	toDate.setDate(this.cal_end_date.getDay());
+	//시작일-종료일 
+	calDate = fromDate.getTime() - toDate.getTime();
+	//eidt텍스트에 결과값 담기 
+	this.edit_day.set_value(Math.abs(calDate/day));//abs-절대값 반환
+};
+
+/* 일자 구하기 이벤트   끝 */]]></Script>
+  </Form>
+</FDL>
