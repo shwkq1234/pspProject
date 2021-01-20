@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_deal_purchase_create" width="770" height="620" titletext="New Form">
+    <Layouts>
+      <Layout height="620" mobileorientation="landscape" width="770">
+        <Static id="lb_deal_purchase_create" taborder="0" text="매입거래 등록" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_deal_purchase_create_center" taborder="1" left="10" top="50" width="750" height="516" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_deal_date" taborder="2" text="거래일" left="31" top="80" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Calendar id="cal_deal_date" taborder="3" left="142" top="78" width="180" height="35"/>
+        <Static id="lb_account_name" taborder="4" text="거래처명" left="31" top="133" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_name" taborder="5" left="142" top="131" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_account_name_search" taborder="6" left="323" top="133" width="30" height="30" border="0px none transparent" background="transparent" icon="url('imagerc::search.png')" text="" onclick="btn_account_name_search_onclick"/>
+        <Static id="lb_account_rep" taborder="7" text="대표자" left="31" top="186" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_rep" taborder="8" left="142" top="184" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_account_num" taborder="9" text="전화번호" left="424" top="186" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_account_num" taborder="10" left="535" top="184" width="180" height="35" inputtype="normal"/>
+        <Button id="btn_crops_add" taborder="11" text="품목추가" left="619" top="235" width="60" height="34" background="#8497B0" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="btn_crops_add_onclick"/>
+        <Button id="btn_crops_del" taborder="12" text="품목삭제" left="680" top="235" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="btn_crops_del_onclick"/>
+        <Grid id="grid_crops_detailList" taborder="13" left="31" top="270" width="710" height="223" binddataset="ds_crops_detailList" onheadclick="grid_crops_detailList_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="160"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="168"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="DEAL_CK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="농산물명"/>
+                <Cell col="2" text="수량"/>
+                <Cell col="3" text="단위"/>
+                <Cell col="4" text="단가"/>
+                <Cell col="5" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DEAL_CK" edittype="checkbox" displaytype="checkboxcontrol"/>
+                <Cell col="1" text="bind:CROPS_M"/>
+                <Cell col="2" text="bind:DEAL_AMOUNT"/>
+                <Cell col="3" text="bind:CROPS_UNIT"/>
+                <Cell col="4" text="bind:DEAL_UNITPRICE"/>
+                <Cell col="5" text="bind:DEAL_TOTAL"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="lb_emp_name" taborder="14" text="담당자" left="31" top="516" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_name" taborder="15" left="142" top="514" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_deal_purchase_create" taborder="16" text="등록" left="660" top="576" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+        <PopupDiv id="popdiv_account_name_search" visible="false" left="797" top="270" width="400" height="400" background="#ffffff">
+          <Layouts>
+            <Layout>
+              <Static id="lb_account_search" taborder="0" text="거래처 조회" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+              <Button id="btn_account_search_close" taborder="1" left="362" top="5" width="30" height="30" background="transparent" border="0px none transparent" icon="url('imagerc::close.png')" onclick="popdiv_account_name_search_btn_account_search_close_onclick"/>
+              <Static id="lb_account_search_center" taborder="2" left="10" top="58" width="380" height="280" background="#EDEFF3" border="0px none transparent" text=""/>
+              <Edit id="edit_account_name_search" taborder="3" left="124" top="78" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+              <Static id="lb_account_name" taborder="4" text="거래처명" left="23" top="80" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+              <Button id="btn_account_name_search" taborder="5" text="검색" left="320" top="78" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+              <Button id="btn_account_add" taborder="6" text="등록" left="290" top="353" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+              <Grid id="grid_accountList" taborder="7" left="23" top="125" width="357" height="205" binddataset="ds_accountList">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="130"/>
+                      <Column size="100"/>
+                      <Column size="125"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="거래처명"/>
+                      <Cell col="1" text="대표자"/>
+                      <Cell col="2" text="전화번호"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:ACCOUNT_NAME"/>
+                      <Cell col="1" text="bind:ACCOUNT_REP"/>
+                      <Cell col="2" text="bind:ACCOUNT_NUM"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_accountList">
+        <ColumnInfo>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="ACCOUNT_REP" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NUM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ACCOUNT_NAME">야채가게</Col>
+            <Col id="ACCOUNT_REP">김당근</Col>
+            <Col id="ACCOUNT_NUM">000-0000-0000</Col>
+          </Row>
+          <Row>
+            <Col id="ACCOUNT_NAME">농민마트</Col>
+            <Col id="ACCOUNT_REP">이버섯</Col>
+            <Col id="ACCOUNT_NUM">111-1111-1111</Col>
+          </Row>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_deal_typeList">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="DEAL_TYPE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DEAL_TYPE">매출거래</Col>
+            <Col id="CODE">0</Col>
+          </Row>
+          <Row>
+            <Col id="DEAL_TYPE">매입거래</Col>
+            <Col id="CODE">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_crops_detailList">
+        <ColumnInfo>
+          <Column id="DEAL_CK" type="STRING" size="256"/>
+          <Column id="CROPS_M" type="STRING" size="256"/>
+          <Column id="DEAL_AMOUNT" type="INT" size="256"/>
+          <Column id="CROPS_UNIT" type="STRING" size="256"/>
+          <Column id="DEAL_UNITPRICE" type="INT" size="256"/>
+          <Column id="DEAL_TOTAL" type="STRING" size="256" prop="SUM"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CROPS_M">고구마</Col>
+            <Col id="DEAL_AMOUNT">1000</Col>
+            <Col id="CROPS_UNIT">KG</Col>
+            <Col id="DEAL_TOTAL"/>
+            <Col id="DEAL_UNITPRICE">4400</Col>
+          </Row>
+          <Row>
+            <Col id="CROPS_M">감자</Col>
+            <Col id="DEAL_AMOUNT">3000</Col>
+            <Col id="CROPS_UNIT">KG</Col>
+            <Col id="DEAL_UNITPRICE">1600</Col>
+          </Row>
+          <Row>
+            <Col id="CROPS_UNIT">KG</Col>
+            <Col id="CROPS_M">콩</Col>
+            <Col id="DEAL_AMOUNT">2000</Col>
+            <Col id="DEAL_UNITPRICE">1600</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/* 거래처명 찾기 버튼 이벤트 시작 */
+this.btn_account_name_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.popdiv_account_name_search.trackPopup(400,160,400,400);
+};
+/* 거래처명 찾기 버튼 이벤트   끝 */	
+
+/* popupdiv 닫기 버튼 이벤트 시작 */
+this.popdiv_account_name_search_btn_account_search_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.popdiv_account_name_search.closePopup("Close");	
+};
+/* popupdiv 닫기 버튼 이벤트   끝 */	
+
+/* 품목추가, 삭제 버튼 이벤트 시작 */
+this.btn_crops_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_crops_detailList.addRow();
+};
+
+this.btn_crops_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_crops_detailList.deleteRow(this.ds_crops_detailList.rowposition);//rowposition : 선택한 위치의 row를 삭제
+};
+/* 품목추가, 삭제 버튼 이벤트   끝 */
+
+/* 체크박스 설정 시작 */
+this.grid_crops_detailList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+//alert("onheadclick 클릭 이벤트 성공");
+	//체크박스로 설정한 첫 번째 head 컬럼을 클릭했을 경우에 gf_setCheckAll 함수를 호출
+    if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var strColID = obj.getCellProperty("body", e.cell, "text").replace(/bind:/i, "");
+        
+    //체크박스가 체크되어 있으면 체크 해제 
+    //체크되어 있지 않으면 체크
+    this.gv_isCheckAll = (this.gv_isCheckAll ? 0 : 1);
+    
+    //Dataset의 이벤트를 끔
+    //this.Dataset00.enableevent = false;
+    
+    //check to body column
+    for(var i=0; i< this.ds_crops_detailList.getRowCount(); i++)
+    {
+        this.ds_crops_detailList.setColumn(i, strColID, this.gv_isCheckAll);
+    }
+    //check to head column
+    obj.setCellProperty("Head", 0, "text", this.gv_isCheckAll);
+
+    //Dataset의 이벤트를 켬
+    //this.Dataset00.enableevent = true;	
+};
+/* 체크박스 설정   끝 */
+
+
+
+]]></Script>
+  </Form>
+</FDL>

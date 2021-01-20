@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_approval_mgr_decide" width="1280" height="670" titletext="New Form">
+    <Layouts>
+      <Layout height="670" mobileorientation="landscape" width="1280">
+        <Div id="div_approval_mgr_decide" taborder="0" left="0" top="0" width="1280" height="670" text="">
+          <Layouts>
+            <Layout>
+              <Static id="lb_approval_mgr_decide" taborder="0" text="기결함 조회" left="0" top="0" width="1280" height="35" background="#333F50" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="#ffffff" padding="0px 0px 0px 10px"/>
+              <Static id="lb_approval_mgr_decide_search" taborder="1" left="26" top="49" width="1230" height="120" background="#D6DCE5" color="black" text="" onclick="div_approval_delay_lb_file_search_onclick"/>
+              <Static id="lb_write_date" taborder="4" text="작성일" left="72" top="67" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+              <Calendar id="cal_start_date" taborder="5" left="147" top="65" width="200" height="35" type="normal"/>
+              <Static id="lb_date_center" taborder="10" text="~" left="357" top="67" width="22" height="24" font="normal 700 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
+              <Calendar id="cal_end_date" taborder="6" left="389" top="65" width="200" height="35" type="normal"/>
+              <Button id="btn_approval_mgr_decide_search" taborder="2" text="검색" left="1106" top="115" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
+              <Static id="lb_approval_type" taborder="7" text="문서 종류" left="72" top="117" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+              <Combo id="cb_approval_type" taborder="8" left="147" top="115" width="200" height="35" border="1px solid #242d40" innerdataset="ds_approval_typeList" codecolumn="code" datacolumn="type"/>
+              <Grid id="grid_approvalList" taborder="9" left="26" top="180" width="1230" height="436" binddataset="ds_approvalList" onheadclick="div_approval_mgr_decide_grid_approvalList_onheadclick" oncelldblclick="div_approval_mgr_decide_grid_approvalList_oncelldblclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="173"/>
+                      <Column size="175"/>
+                      <Column size="200"/>
+                      <Column size="130"/>
+                      <Column size="320"/>
+                      <Column size="150"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="문서번호"/>
+                      <Cell col="2" text="문서종류"/>
+                      <Cell col="3" text="신청일"/>
+                      <Cell col="4" text="작성자"/>
+                      <Cell col="5" text="제목"/>
+                      <Cell col="6" text="결재상태"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:check" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="bind:문서번호"/>
+                      <Cell col="2" text="bind:문서종류"/>
+                      <Cell col="3" text="bind:신청일"/>
+                      <Cell col="4" text="bind:작성자"/>
+                      <Cell col="5" text="bind:제목"/>
+                      <Cell col="6" text="bind:결재상태"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btn_approval_delete" taborder="3" text="삭제" left="26" top="626" width="100" height="34" background="#242D40" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_approvalList">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="문서번호" type="STRING" size="256"/>
+          <Column id="문서종류" type="STRING" size="256"/>
+          <Column id="신청일" type="STRING" size="256"/>
+          <Column id="작성자" type="STRING" size="256"/>
+          <Column id="제목" type="STRING" size="256"/>
+          <Column id="결재상태" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="check">0</Col>
+            <Col id="문서종류">품의서</Col>
+            <Col id="결재상태">기결</Col>
+          </Row>
+          <Row>
+            <Col id="check">0</Col>
+            <Col id="문서종류">보고서</Col>
+            <Col id="결재상태">기결</Col>
+          </Row>
+          <Row>
+            <Col id="check">0</Col>
+            <Col id="문서종류">기안서</Col>
+            <Col id="결재상태">기결</Col>
+          </Row>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_approval_typeList">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="type" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="type">기안서</Col>
+            <Col id="code">0</Col>
+          </Row>
+          <Row>
+            <Col id="type">보고서</Col>
+            <Col id="code">1</Col>
+          </Row>
+          <Row>
+            <Col id="type">품의서</Col>
+            <Col id="code">2</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/* 체크박스 설정 시작 */
+this.div_approval_mgr_decide_grid_approvalList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//alert("onheadclick 클릭 이벤트 성공");
+	//체크박스로 설정한 첫 번째 head 컬럼을 클릭했을 경우에 gf_setCheckAll 함수를 호출
+    if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var strColID = obj.getCellProperty("body", e.cell, "text").replace(/bind:/i, "");
+        
+    //체크박스가 체크되어 있으면 체크 해제 
+    //체크되어 있지 않으면 체크
+    this.gv_isCheckAll = (this.gv_isCheckAll ? 0 : 1);
+    
+    //Dataset의 이벤트를 끔
+    //this.Dataset00.enableevent = false;
+    
+    //check to body column
+    for(var i=0; i< this.ds_approvalList.getRowCount(); i++)
+    {
+        this.ds_approvalList.setColumn(i, strColID, this.gv_isCheckAll);
+    }
+    //check to head column
+    obj.setCellProperty("Head", 0, "text", this.gv_isCheckAll);
+
+    //Dataset의 이벤트를 켬
+    //this.Dataset00.enableevent = true;
+};
+/* 체크박스 설정   끝 */
+
+this.div_approval_mgr_decide_grid_approvalList_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	/* rowposition:선택한 로우 */
+	var nRow = this.ds_approvalList.rowposition;
+	/* param1:선택한 로우, param2:값 가져올 컬럼id */
+	var approval_type = this.ds_approvalList.getColumn(nRow,"문서종류");
+	if(approval_type == "기안서"){
+		alert("기안서");
+		var objChildFrame = new ChildFrame();//ChildFrame생성
+		objChildFrame.init("popup_approval_mgr_draft"
+						, 200//x좌표
+						, 0//y좌표
+						, 772//가로
+						, 650//높이
+						, null
+						, null
+						, "FrameBase::Form_approval_mgr_draft.xfdl");	
+		/*param1 : id, param2 : 값 */				  
+		this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+		this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+		this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+		objChildFrame.show();
+	}
+	else if(approval_type == "품의서"){
+		alert("품의서");
+		var objChildFrame = new ChildFrame();//ChildFrame생성
+		objChildFrame.init("popup_approval_mgr_expense"
+						, 200//x좌표
+						, 0//y좌표
+						, 772//가로
+						, 650//높이
+						, null
+						, null
+						, "FrameBase::Form_approval_mgr_expense.xfdl");	
+		/*param1 : id, param2 : 값 */				  
+		this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+		this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+		this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+		objChildFrame.show();
+	}
+	else {
+		alert("보고서");
+		var objChildFrame = new ChildFrame();//ChildFrame생성
+		objChildFrame.init("popup_approval_mgr_report"
+						, 200//x좌표
+						, 0//y좌표
+						, 772//가로
+						, 650//높이
+						, null
+						, null
+						, "FrameBase::Form_approval_mgr_report.xfdl");	
+		/*param1 : id, param2 : 값 */				  
+		this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+		this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+		this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+		objChildFrame.show();	
+	}	
+};
+]]></Script>
+  </Form>
+</FDL>

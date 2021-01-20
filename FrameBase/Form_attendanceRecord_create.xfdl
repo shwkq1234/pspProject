@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_attendanceRecord_create" width="400" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="400">
+        <Static id="lb_attendanceRecord_create_center" taborder="0" left="10" top="50" width="380" height="293" background="#EDEFF3" border="0px none transparent"/>
+        <Static id="lb_attendanceRecord_create" taborder="1" text="근태항목 등록" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_attendanceRecord_no" taborder="2" text="근태코드" left="35" top="69" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_attendanceRecord_no" taborder="3" left="122" top="67" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_attendanceRecord_no_check" taborder="4" text="중복확인" left="310" top="67" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+        <Static id="lb_attendanceRecord_name" taborder="5" text="근태명" left="35" top="137" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_attendanceRecord_name" taborder="6" left="122" top="136" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_vacation_type" taborder="7" text="휴가여부" left="35" top="205" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Static id="lb_work_type" taborder="8" text="유/무급" left="35" top="273" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Combo id="cb_vacation_type" taborder="9" left="122" top="205" width="150" height="35" innerdataset="ds_vacation_typeList" codecolumn="num" datacolumn="휴가사용여부"/>
+        <Combo id="cb_work_type" taborder="10" left="122" top="274" width="150" height="35" innerdataset="ds_work_typeList" codecolumn="num" datacolumn="유무급"/>
+        <Button id="btn_attendanceRecord_create" taborder="11" text="등록" left="290" top="356" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_vacation_typeList">
+        <ColumnInfo>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="휴가사용여부" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="num">0</Col>
+            <Col id="휴가사용여부">사용</Col>
+          </Row>
+          <Row>
+            <Col id="num">1</Col>
+            <Col id="휴가사용여부">미사용</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_work_typeList">
+        <ColumnInfo>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="유무급" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="num">0</Col>
+            <Col id="유무급">유급</Col>
+          </Row>
+          <Row>
+            <Col id="num">1</Col>
+            <Col id="유무급">무급</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

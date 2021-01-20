@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_emp" width="1280" height="670" titletext="New Form">
+    <Layouts>
+      <Layout height="670" mobileorientation="landscape" width="1280">
+        <Div id="div_emp" taborder="0" left="0" top="0" width="1280" height="670">
+          <Layouts>
+            <Layout>
+              <Static id="lb_emp" taborder="0" text="사원 조회" left="0" top="0" width="1280" height="35" background="#333F50" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="#ffffff" padding="0px 0px 0px 10px" onclick="div_emp_lb_emp_onclick"/>
+              <Static id="lb_emp_search" taborder="1" left="26" top="49" width="1230" height="80" background="#D6DCE5" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 40px" textAlign="left" verticalAlign="middle"/>
+              <Static id="lb_emp_name" taborder="2" text="사원명" left="72" top="74" width="100" height="30"/>
+              <Edit id="ed_empName" taborder="3" left="147" top="72" width="200" height="35"/>
+              <Button id="btn_emp_name_search" taborder="4" text="검색" left="426" top="72" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_emp_btn_emp_name_search_onclick"/>
+              <Grid id="grid_empList" taborder="5" left="26" top="135" width="1230" height="480" binddataset="ds_empList" color="#242d40" onheadclick="div_emp_grid_empList_onheadclick" oncelldblclick="div_emp_grid_empList_oncelldblclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="70"/>
+                      <Column size="180"/>
+                      <Column size="120"/>
+                      <Column size="249"/>
+                      <Column size="180"/>
+                      <Column size="220"/>
+                      <Column size="209"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="사원번호"/>
+                      <Cell col="2" text="사원명"/>
+                      <Cell col="3" text="부서"/>
+                      <Cell col="4" text="직급"/>
+                      <Cell col="5" text="주민등록번호"/>
+                      <Cell col="6" text="입사일"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:EMP_CK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="bind:EMP_NO"/>
+                      <Cell col="2" text="bind:EMP_NAME"/>
+                      <Cell col="3" text="bind:DEPT_NAME"/>
+                      <Cell col="4" text="bind:RANK_NAME"/>
+                      <Cell col="5" text="bind:EMP_BIRTH"/>
+                      <Cell col="6" text="bind:EMP_ENDATE"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btn_emp_del" taborder="6" text="삭제" left="26" top="626" width="100" height="34" background="#242D40" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_emp_btn_emp_del_onclick"/>
+              <Button id="btn_emp_add" taborder="7" text="사원등록" left="1156" top="626" width="100" height="34" background="#8497B0" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_emp_btn_emp_add_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_empList">
+        <ColumnInfo>
+          <Column id="EMP_CK" type="STRING" size="256"/>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="RANK_NAME" type="STRING" size="256"/>
+          <Column id="EMP_BIRTH" type="STRING" size="256"/>
+          <Column id="EMP_ENDATE" type="STRING" size="256"/>
+          <Column id="SALARY_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/* 체크박스 설정 시작 */
+this.div_emp_grid_empList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//alert("onheadclick 클릭 이벤트 성공");
+	//체크박스로 설정한 첫 번째 head 컬럼을 클릭했을 경우에 gf_setCheckAll 함수를 호출
+    if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var strColID = obj.getCellProperty("body", e.cell, "text").replace(/bind:/i, "");
+        
+    //체크박스가 체크되어 있으면 체크 해제 
+    //체크되어 있지 않으면 체크
+    this.gv_isCheckAll = (this.gv_isCheckAll ? 0 : 1);
+    
+    //Dataset의 이벤트를 끔
+    //this.Dataset00.enableevent = false;
+    
+    //check to body column
+    for(var i=0; i< this.ds_empList.getRowCount(); i++)
+    {
+        this.ds_empList.setColumn(i, strColID, this.gv_isCheckAll);
+    }
+    //check to head column
+    obj.setCellProperty("Head", 0, "text", this.gv_isCheckAll);
+
+    //Dataset의 이벤트를 켬
+    //this.Dataset00.enableevent = true;
+};
+/* 체크박스 설정   끝 */
+this.div_emp_btn_emp_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//alert("사원등록");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_emp_create"
+	                  , 200//x좌표
+					  , 0//y좌표
+					  , 772//가로
+					  , 650//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_emp_create.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();		
+};
+
+this.div_emp_grid_empList_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{	
+	var p_empNo = this.ds_empList.getColumn(e.row, "EMP_NO");
+	alert("수정할 사원번호(부모) : "+p_empNo);
+	//전역데이터셋 가져오기.
+	var objApp = nexacro.getApplication();
+	var objDs = objApp.gb_empList;
+	
+	this.objApp_var = nexacro.getApplication();
+	this.objApp_var.gb_empUNo = p_empNo;
+	//수정할 사원번호 select
+	//this.transaction("empUSelect" ,"SvcURL::hr/empUSelect.psp","" ,"gb_empList=out_empList" ,"p_empNo="+p_empNo ,"fn_callback");
+	
+	//alert("사원상세보기");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_emp_detail"
+	                  , 200//x좌표
+					  , 0//y좌표
+					  , 772//가로
+					  , 650//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_emp_detail.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();
+};
+
+this.div_emp_btn_emp_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//alert("삭제버튼 클릭");
+	//this.ds_emp.deleteRow(this.ds_emp.rowposition);
+	var p_empno = '';
+	var p_empnoStr = '';
+	//var empno = this.ds_emp.getColumn(this.ds_emp.rowposition,'EMPNO');
+	//alert("현재 사번:"+empno);
+	for(i=0;i<this.ds_empList.getRowCount();i++){
+		var val = this.ds_empList.getColumn(i,'EMP_CK');
+		//alert("val : "+val);선택된 체크박스값만 1 찍음
+		if(val == 1){
+			p_empno = this.ds_empList.getColumn(i,'EMP_NO');//선택된 체크박스 로우에 사원번호
+			p_empnoStr += p_empno + ",";
+			//alert("cempno : "+cempno+", empnos : "+empnos);
+		}
+	}
+	if(p_empnoStr.length>1){
+			p_empnoStr = p_empnoStr.substring(0,p_empnoStr.length-1);
+	}
+	alert("p_empnoStr : "+p_empnoStr);
+	this.transaction("empDelete" ,"SvcURL::hr/empDelete.psp?p_empnoStr="+p_empnoStr ,"in_empList=ds_empList" ,"ds_empList=out_empList" ,"사원삭제" ,"fn_callback");
+};
+
+
+this.div_emp_btn_emp_name_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var p_empName = this.div_emp.form.ed_empName.value;
+	//alert("사원명 : " + p_empName);
+	this.transaction("empSelect" ,"SvcURL::hr/empSelect.psp?p_empName="+p_empName ,"" ,"ds_empList=out_empList" ,"" ,"fn_callback");	
+};
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		return; 
+	}
+	if(svcID == "empDelete"){
+		//this.alert("empDelete Success");
+		//this.go("FrameBase::Form_emp.xfdl");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

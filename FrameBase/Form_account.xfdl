@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_account" width="1280" height="670" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="div_account" taborder="0" left="0" top="0" width="1280" height="670">
+          <Layouts>
+            <Layout>
+              <Static id="lb_account" taborder="0" text="거래처 조회" left="0" top="0" width="1280" height="35" background="#333F50" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="#ffffff" padding="0px 0px 0px 10px"/>
+              <Static id="lb_account_search" taborder="1" left="26" top="49" width="1230" height="80" background="#D6DCE5" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 20px" textAlign="left" verticalAlign="middle"/>
+              <Static id="lb_account_no" taborder="2" text="코드" left="72" top="74" width="100" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+              <Edit id="edit_account_no_search" taborder="3" left="147" top="72" width="200" height="35" onchanged="Common_onchanged"/>
+              <Static id="lb_account_name" taborder="4" text="거래처명" left="412" top="74" width="100" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+              <Edit id="edit_account_name_search" taborder="5" left=" 487" top="72" width="200" height="35"/>
+              <Static id="lb_account_rep" taborder="6" text="대표자명" left="752" top="74" width="100" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+              <Edit id="edit_account_rep_search" taborder="7" left="827" top="72" width="200" height="35"/>
+              <Button id="btn_account_search" taborder="8" text="검색" left="1106" top="72" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_account_btn_account_search_onclick"/>
+              <Grid id="grid_accountList" taborder="9" left="26" top="135" width="1230" height="480" onheadclick="div_account_grid_accountList_onheadclick" binddataset="ds_accountList" oncelldblclick="div_account_grid_accountList_oncelldblclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="130"/>
+                      <Column size="150"/>
+                      <Column size="125"/>
+                      <Column size="100"/>
+                      <Column size="125"/>
+                      <Column size="258"/>
+                      <Column size="100"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="ACCOUNT_CK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="구분"/>
+                      <Cell col="2" text="코드"/>
+                      <Cell col="3" text="거래처명"/>
+                      <Cell col="4" text="사업자번호"/>
+                      <Cell col="5" text="대표자"/>
+                      <Cell col="6" text="전화번호"/>
+                      <Cell col="7" text="주소"/>
+                      <Cell col="8" text="담당자"/>
+                      <Cell col="9" text="사용구분"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:ACCOUNT_CK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="bind:ACCOUNT_TYPE"/>
+                      <Cell col="2" text="bind:ACCOUNT_CODE"/>
+                      <Cell col="3" text="bind:ACCOUNT_NAME"/>
+                      <Cell col="4" text="bind:ACCOUNT_REPNUM"/>
+                      <Cell col="5" text="bind:ACCOUNT_REP"/>
+                      <Cell col="6" text="bind:ACCOUNT_NUM"/>
+                      <Cell col="7" text="bind:ACCOUNT_ADDR"/>
+                      <Cell col="8" text="bind:EMP_NAME"/>
+                      <Cell col="9" text="bind:ACCOUNT_USE"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_account_del" taborder="1" text="삭제" left="26" top="626" width="100" height="34" background="#242D40" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="btn_account_del_onclick"/>
+        <Button id="btn_account_add" taborder="2" text="거래처등록" left="1156" top="626" width="100" height="34" background="#8497B0" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="btn_account_add_onclick"/>
+        <Combo id="cb_account_type" taborder="3" left="936" top="626" width="200" height="35" border="1px solid #242d40" innerdataset="ds_account_typeList" codecolumn="CODE" datacolumn="ACCOUNT_TYPE" onitemclick="cb_account_type_onitemclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_accountList">
+        <ColumnInfo>
+          <Column id="ACCOUNT_CK" type="STRING" size="256"/>
+          <Column id="ACCOUNT_TYPE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="ACCOUNT_REPNUM" type="STRING" size="256"/>
+          <Column id="ACCOUNT_REP" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NUM" type="STRING" size="256"/>
+          <Column id="ACCOUNT_ADDR" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="ACCOUNT_USE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ACCOUNT_CK">0</Col>
+            <Col id="ACCOUNT_NAME">야채가게</Col>
+            <Col id="ACCOUNT_TYPE">매입</Col>
+          </Row>
+          <Row>
+            <Col id="ACCOUNT_CK">0</Col>
+            <Col id="ACCOUNT_NAME">농민마트</Col>
+            <Col id="ACCOUNT_TYPE">매출</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_account_typeList">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_TYPE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ACCOUNT_TYPE">매출</Col>
+            <Col id="CODE">0</Col>
+          </Row>
+          <Row>
+            <Col id="ACCOUNT_TYPE">매입</Col>
+            <Col id="CODE">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/* 체크박스 설정 시작 */
+this.div_account_grid_accountList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//alert("onheadclick 클릭 이벤트 성공");
+	//체크박스로 설정한 첫 번째 head 컬럼을 클릭했을 경우에 gf_setCheckAll 함수를 호출
+    if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var strColID = obj.getCellProperty("body", e.cell, "text").replace(/bind:/i, "");
+        
+    //체크박스가 체크되어 있으면 체크 해제 
+    //체크되어 있지 않으면 체크
+    this.gv_isCheckAll = (this.gv_isCheckAll ? 0 : 1);
+    
+    //Dataset의 이벤트를 끔
+    //this.Dataset00.enableevent = false;
+    
+    //check to body column
+    for(var i=0; i< this.ds_accountList.getRowCount(); i++)
+    {
+        this.ds_accountList.setColumn(i, strColID, this.gv_isCheckAll);
+    }
+    //check to head column
+    obj.setCellProperty("Head", 0, "text", this.gv_isCheckAll);
+
+    //Dataset의 이벤트를 켬
+    //this.Dataset00.enableevent = true;
+};
+/* 체크박스 설정   끝 */
+this.btn_account_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.cb_account_type.value == 0){
+		alert("매출 거래처 등록");
+		var objChildFrame = new ChildFrame();//ChildFrame생성
+		objChildFrame.init("popup_account_sales_create"
+						, 200//x좌표
+						, 0//y좌표
+						, 772//가로
+						, 650//높이
+						, null
+						, null
+						, "FrameBase::Form_account_sales_create.xfdl");	
+		/*param1 : id, param2 : 값 */				  
+		this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+		this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+		this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+		objChildFrame.show();
+	}
+	else{
+		alert("매입 거래처 등록");	
+		var objChildFrame = new ChildFrame();//ChildFrame생성
+		objChildFrame.init("popup_account_purchase_create"
+						, 200//x좌표
+						, 0//y좌표
+						, 772//가로
+						, 650//높이
+						, null
+						, null
+						, "FrameBase::Form_account_purchase_create.xfdl");	
+		/*param1 : id, param2 : 값 */				  
+		this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+		this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+		this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+		objChildFrame.show();	
+	}
+
+};
+
+this.div_account_grid_accountList_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+		alert("거래처 상세보기");	
+		var objChildFrame = new ChildFrame();//ChildFrame생성
+		objChildFrame.init("popup_account_detail"
+						, 200//x좌표
+						, 0//y좌표
+						, 772//가로
+						, 650//높이
+						, null
+						, null
+						, "FrameBase::Form_account_detail.xfdl");	
+		/*param1 : id, param2 : 값 */				  
+		this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+		this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+		this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+		objChildFrame.show();	
+};
+
+
+this.btn_account_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("삭제버튼 실행 이벤트");
+};
+
+
+
+
+
+this.div_account_btn_account_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("조회버튼 클릭");
+	this.transaction("accountSelect" ,"SvcURL::sales/accountSelect.psp" ,"in_accountList=ds_accountList" ,"ds_accountList=out_accountList" ,"거래처검색" ,"fn_callback");
+};
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		return; 
+	}
+	if(svcID == "accountSelect"){
+		this.alert("accountSelect Success");
+	}
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

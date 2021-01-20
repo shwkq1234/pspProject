@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_dept_update" width="400" height="400" titletext="New Form" onload="Form_dept_update_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="400">
+        <Static id="lb_dept_update" taborder="0" text="부서 수정" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_dept_update_center" taborder="1" left="10" top="50" width="380" height="293" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_dept_no" taborder="2" text="부서코드" left="34" top="74" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_dept_no" taborder="3" left="115" top="72" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_dept_no_check" taborder="4" text="중복확인" left="310" top="72" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_dept_no_check_onclick"/>
+        <Static id="lb_dept_name" taborder="5" text="부서명" left="34" top="127" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_dept_name" taborder="6" left="115" top="125" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_dept_use" taborder="7" text="사용여부" left="34" top="180" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Combo id="cb_dept_use" taborder="8" left="115" top="178" width="180" height="35" innerdataset="gb_use" datacolumn="use_name" codecolumn="use_name"/>
+        <Static id="lb_dept_note" taborder="9" text="비고" left="34" top="233" width="60" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_dept_note" taborder="10" left="115" top="231" width="255" height="97" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_dept_update" taborder="11" text="수정" left="290" top="356" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true" onclick="btn_dept_update_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Form_dept_update_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//폼이 로드된 후 발생하는 이벤트
+	//var nRow = this.Dataset00.findRow("chk", true);
+	//var sSalayNo = this.Dataset00.getColumn(nRow, "salay_no");
+
+	this.objApp = nexacro.getApplication();
+	this.objApp.gb_deptNo
+	alert("자식창_선택한 부서번호 : " + this.objApp.gb_deptNo);
+	this.edit_dept_no.set_value(this.objApp.gb_deptNo);
+	this.edit_dept_name.set_value(this.objApp.gb_deptName);
+	this.cb_dept_use.set_value(this.objApp.gb_deptUse);
+	this.edit_dept_note.set_value(this.objApp.gb_deptNote);
+};
+
+this.btn_dept_no_check_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("부서코드 중복검사");
+	var p_deptNo = this.edit_dept_no.value; //ds_deptList=out_deptList
+	if(p_deptNo == undefined) {
+		alert("부서코드를 입력하시오");
+		return;
+	}
+	this.transaction("deptCheck" ,"SvcURL::hr/deptCheck.psp","" ,"" ,"p_deptNo="+p_deptNo ,"fn_callback");
+};
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	alert("fn_callback호출 성공"+svcID+","+errCD);
+	alert(errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		check = 0;
+		return; 
+	}
+	if(svcID == "deptCheck"){
+		//this.alert("deptCheck Success");
+		check = 1;
+		//this.go("FrameBase::Form_emp.xfdl");
+	}
+	if(svcID == "deptUpdate"){
+		//this.alert("deptUpdate Success");
+		check = 0;
+		//this.go("FrameBase::Form_emp.xfdl");
+	}
+}
+
+var check = 0;
+
+this.btn_dept_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("부서수정버튼 클릭");
+	var p_beforeDeptNo = this.objApp.gb_deptNo;
+	var p_afterDeptNo = this.edit_dept_no.value;
+	var p_deptName = this.edit_dept_name.value;
+	var p_deptUse = this.cb_dept_use.value;
+	var p_deptNote = this.edit_dept_note.value;
+	if(p_afterDeptNo == undefined || p_afterDeptNo =="") {
+		alert("부서코드를 입력하시오");
+		return;
+	}
+	if(p_deptName == undefined || p_deptName == "") {
+		alert("부서명을 입력하시오");
+		return;
+	}
+	if(p_deptUse == undefined || p_deptUse == "") {
+		alert("사용여부를 선택하시오");
+		return;
+	}
+	if(check == 0) {
+		alert("부서코드 중복검사를 하시오.");
+		return;
+	}
+	
+	this.transaction("deptUpdate" ,"SvcURL::hr/deptUpdate.psp","" ,"" ,"p_beforeDeptNo="+p_beforeDeptNo+" p_deptName="+p_deptName+" p_afterDeptNo="+p_afterDeptNo+" p_deptUse="+p_deptUse+" p_deptNote="+p_deptNote ,"fn_callback");
+	//this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

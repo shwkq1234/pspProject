@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_inout" width="1280" height="670" titletext="New Form">
+    <Layouts>
+      <Layout height="670" mobileorientation="landscape" width="1280">
+        <Div id="div_inout" taborder="0" left="0" top="0" width="1280" height="670">
+          <Layouts>
+            <Layout>
+              <Static id="lb_inout" taborder="1" text="입고/출고 관리" left="0" top="0" width="1280" height="35" background="#333F50" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="#ffffff" padding="0px 0px 0px 10px" onclick="Common_onclick"/>
+              <Tab id="tab_inout" taborder="2" tabindex="0" left="26" top="49" width="1230" height="611">
+                <Tabpages>
+                  <Tabpage id="tab_in" text="입고">
+                    <Layouts>
+                      <Layout>
+                        <Static id="lb_period_search" taborder="0" text="기간" left="24" top="22" width="100" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" height="30"/>
+                        <Calendar id="cal_period_start_search" taborder="1" left="121" top="20" width="160" height="35" type="normal"/>
+                        <Static id="lb_period_center_search" taborder="2" text="~" left="281" top="22" width="22" height="30" font="normal 700 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="center"/>
+                        <Calendar id="cal_period_end_search" taborder="3" left="303" top="20" width="160" height="35" type="normal"/>
+                        <Static id="lb_account_name" taborder="4" text="거래처명" left="498" top="22" width="100" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+                        <Edit id="edit_account_name_search" taborder="5" left="595" top="20" width="160" height="35"/>
+                        <Static id="lb_crops_name" taborder="6" text="농산물명" left="790" top="22" width="100" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+                        <Edit id="edit_crops_name_search" taborder="7" left="887" top="20" width="160" height="35"/>
+                        <Button id="btn_in_search" taborder="8" text="검색" left="1106" top="22" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_in_btn_in_search_onclick"/>
+                        <Grid id="grid_inList" taborder="12" left="24" top="73" width="1182" height="440" binddataset="ds_inList" onheadclick="div_inout_tab_inout_tab_in_grid_inList_onheadclick">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="80"/>
+                                <Column size="200"/>
+                                <Column size="220"/>
+                                <Column size="180"/>
+                                <Column size="200"/>
+                                <Column size="120"/>
+                                <Column size="180"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                                <Cell col="1" text="입고일자"/>
+                                <Cell col="2" text="거래처명"/>
+                                <Cell col="3" text="농산물코드"/>
+                                <Cell col="4" text="농산물명"/>
+                                <Cell col="5" text="단위"/>
+                                <Cell col="6" text="입고수량"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell text="bind:INOUT_CK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                <Cell col="1" text="bind:INOUT_DATE" displaytype="calendarcontrol" edittype="date" calendardateformat="yyyy-MM-dd"/>
+                                <Cell col="2" text="bind:ACCOUNT_NAME"/>
+                                <Cell col="3" text="bind:CROPS_NO"/>
+                                <Cell col="4" text="bind:CROPS_NAME"/>
+                                <Cell col="5" text="bind:INOUT_UNIT"/>
+                                <Cell col="6" text="bind:INOUT_AMOUNT"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                        <Button id="btn_in_del" taborder="9" text="삭제" left="24" top="527" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_in_btn_in_del_onclick"/>
+                        <Button id="btn_in_upd" taborder="10" text="수정" left="986" top="527" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_in_btn_in_upd_onclick"/>
+                        <Button id="btn_in_add" taborder="11" text="입고등록" left="1106" top="527" width="100" height="34" background="#8497B0" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_in_btn_in_add_onclick"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="tab_out" text="출고">
+                    <Layouts>
+                      <Layout>
+                        <Static id="lb_period_search" taborder="0" text="기간" left="24" top="22" width="100" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" height="30"/>
+                        <Calendar id="cal_period_start_search" taborder="1" left="121" top="20" width="160" height="35" type="normal"/>
+                        <Static id="lb_period_center_search" taborder="2" text="~" left="281" top="22" width="22" height="30" font="normal 700 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="center"/>
+                        <Calendar id="cal_period_end_search" taborder="3" left="303" top="20" width="160" height="35" type="normal"/>
+                        <Static id="lb_account_name" taborder="4" text="거래처명" left="498" top="22" width="100" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+                        <Edit id="edit_account_name_search" taborder="5" left="595" top="20" width="160" height="35"/>
+                        <Static id="lb_crops_name" taborder="6" text="농산물명" left="790" top="22" width="100" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+                        <Edit id="edit_crops_name_search" taborder="7" left="887" top="20" width="160" height="35"/>
+                        <Button id="btn_out_search" taborder="8" text="검색" left="1106" top="22" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_out_btn_out_search_onclick"/>
+                        <Grid id="grid_outList" taborder="9" left="24" top="73" width="1182" height="440" binddataset="ds_outList" onheadclick="div_inout_tab_inout_tab_out_grid_outList_onheadclick">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="80"/>
+                                <Column size="200"/>
+                                <Column size="220"/>
+                                <Column size="180"/>
+                                <Column size="200"/>
+                                <Column size="120"/>
+                                <Column size="180"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                                <Cell col="1" text="출고일자"/>
+                                <Cell col="2" text="거래처명"/>
+                                <Cell col="3" text="농산물코드"/>
+                                <Cell col="4" text="농산물명"/>
+                                <Cell col="5" text="단위"/>
+                                <Cell col="6" text="출고수량"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell text="bind:INOUT_CK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                <Cell col="1" text="bind:INOUT_DATE" edittype="date" displaytype="calendarcontrol" calendardateformat="yyyy-MM-dd"/>
+                                <Cell col="2" text="bind:ACCOUNT_NAME"/>
+                                <Cell col="3" text="bind:CROPS_NO"/>
+                                <Cell col="4" text="bind:CROPS_NAME"/>
+                                <Cell col="5" text="bind:INOUT_UNIT"/>
+                                <Cell col="6" text="bind:INOUT_AMOUNT"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                        <Button id="btn_out_del" taborder="10" text="삭제" left="24" top="527" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_out_btn_out_del_onclick"/>
+                        <Button id="btn_out_upd" taborder="11" text="수정" left="986" top="527" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_out_btn_out_upd_onclick"/>
+                        <Button id="btn_out_add" taborder="12" text="출고등록" left="1106" top="527" width="100" height="34" background="#8497B0" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_inout_tab_inout_tab_out_btn_out_add_onclick"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_inList">
+        <ColumnInfo>
+          <Column id="INOUT_CK" type="STRING" size="256"/>
+          <Column id="INOUT_DATE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="CROPS_NO" type="STRING" size="256"/>
+          <Column id="CROPS_NAME" type="STRING" size="256"/>
+          <Column id="INOUT_UNIT" type="STRING" size="256"/>
+          <Column id="INOUT_AMOUNT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ds_outList">
+        <ColumnInfo>
+          <Column id="INOUT_CK" type="STRING" size="256"/>
+          <Column id="INOUT_DATE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="CROPS_NO" type="STRING" size="256"/>
+          <Column id="CROPS_NAME" type="STRING" size="256"/>
+          <Column id="INOUT_UNIT" type="STRING" size="256"/>
+          <Column id="INOUT_AMOUNT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		return; 
+	}
+	if(svcID == "empDelete"){
+		//this.alert("empDelete Success");
+		//this.go("FrameBase::Form_emp.xfdl");
+	}
+}
+
+/*************************************************** [[ 입고 ]] ***************************************************/
+/* 체크박스 설정 시작 */
+this.div_inout_tab_inout_tab_in_grid_inList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//alert("onheadclick 클릭 이벤트 성공");
+	//체크박스로 설정한 첫 번째 head 컬럼을 클릭했을 경우에 gf_setCheckAll 함수를 호출
+    if(e.cell == 0)
+    {
+        this.in_setCheckAll(obj, e);
+    }
+};
+this.in_isCheckAll = 0;
+this.in_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var strColID = obj.getCellProperty("body", e.cell, "text").replace(/bind:/i, "");
+        
+    //체크박스가 체크되어 있으면 체크 해제 
+    //체크되어 있지 않으면 체크
+    this.in_isCheckAll = (this.in_isCheckAll ? 0 : 1);
+    
+    //Dataset의 이벤트를 끔
+    //this.Dataset00.enableevent = false;
+    
+    //check to body column
+    for(var i=0; i< this.ds_inList.getRowCount(); i++)
+    {
+        this.ds_inList.setColumn(i, strColID, this.in_isCheckAll);
+    }
+    //check to head column
+    obj.setCellProperty("Head", 0, "text", this.in_isCheckAll);
+
+    //Dataset의 이벤트를 켬
+    //this.Dataset00.enableevent = true;	
+};
+/* 체크박스 설정   끝 */
+
+this.div_inout_tab_inout_tab_in_btn_in_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("입고등록");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_inout_in_create"
+	                  , 220//x좌표
+					  , 50//y좌표
+					  , 772//가로
+					  , 500//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_inout_in_create.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();	
+};
+
+this.div_inout_tab_inout_tab_in_btn_in_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("입고수정");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_inout_in_update"
+	                  , 220//x좌표
+					  , 50//y좌표
+					  , 772//가로
+					  , 500//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_inout_in_update.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();		
+};
+
+this.div_inout_tab_inout_tab_in_btn_in_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//alert("test : " + this.ds_inList.getColumn(0,1));
+};
+
+this.div_inout_tab_inout_tab_in_btn_in_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var period_from = this.div_inout.form.tab_inout.tab_in.form.cal_period_start_search.value;
+	var period_to = this.div_inout.form.tab_inout.tab_in.form.cal_period_end_search.value; 
+	var account_name = this.div_inout.form.tab_inout.tab_in.form.edit_account_name_search.value;
+	var crops_name = this.div_inout.form.tab_inout.tab_in.form.edit_crops_name_search.value;
+	//alert("test : " + crops_name);
+	
+	this.transaction("inSelect" ,"SvcURL::stock/inSelect.psp" ,"in_inList=ds_inList" ,"ds_inList=out_inList" 
+	,"period_from="+period_from+" period_to="+period_to+" account_name="+account_name+" crops_name="+crops_name
+	,"fn_callback");
+};
+/*************************************************** [[ 입고 ]] ***************************************************/
+/*************************************************** [[ 출고 ]] ***************************************************/
+/* 체크박스 설정 시작 */
+this.div_inout_tab_inout_tab_out_grid_outList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//alert("onheadclick 클릭 이벤트 성공");
+	//체크박스로 설정한 첫 번째 head 컬럼을 클릭했을 경우에 gf_setCheckAll 함수를 호출
+    if(e.cell == 0)
+    {
+        this.out_setCheckAll1(obj, e);
+    }
+};
+this.out_isCheckAll1 = 0;
+this.out_setCheckAll1 = function(obj:Grid, e:GridClickEventInfo)
+{
+    var strColID = obj.getCellProperty("body", e.cell, "text").replace(/bind:/i, "");
+        
+    //체크박스가 체크되어 있으면 체크 해제 
+    //체크되어 있지 않으면 체크
+    this.out_isCheckAll1 = (this.out_isCheckAll ? 0 : 1);
+    
+    //Dataset의 이벤트를 끔
+    //this.Dataset00.enableevent = false;
+    
+    //check to body column
+    for(var i=0; i< this.ds_outList.getRowCount(); i++)
+    {
+        this.ds_outList.setColumn(i, strColID, this.out_isCheckAll1);
+    }
+    //check to head column
+    obj.setCellProperty("Head", 0, "text", this.out_isCheckAll1);
+
+    //Dataset의 이벤트를 켬
+    //this.Dataset00.enableevent = true;		
+};
+/* 체크박스 설정   끝 */
+
+this.div_inout_tab_inout_tab_out_btn_out_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("출고등록");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_inout_out_create"
+	                  , 220//x좌표
+					  , 50//y좌표
+					  , 772//가로
+					  , 498//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_inout_out_create.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();	
+};
+
+this.div_inout_tab_inout_tab_out_btn_out_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("출고수정");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_inout_out_update"
+	                  , 220//x좌표
+					  , 50//y좌표
+					  , 772//가로
+					  , 498//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_inout_out_update.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();	
+};
+
+this.div_inout_tab_inout_tab_out_btn_out_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.div_inout_tab_inout_tab_out_btn_out_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var period_from = this.div_inout.form.tab_inout.tab_out.form.cal_period_start_search.value;
+	var period_to = this.div_inout.form.tab_inout.tab_out.form.cal_period_end_search.value;
+	var account_name = this.div_inout.form.tab_inout.tab_out.form.edit_account_name_search.value;
+	var crops_name = this.div_inout.form.tab_inout.tab_out.form.edit_crops_name_search.value;
+	
+	this.transaction("outSelect" ,"SvcURL::stock/outSelect.psp" ,"in_outList=ds_outList" ,"ds_outList=out_outList" 
+	,"period_from="+period_from+" period_to="+period_to+" account_name="+account_name+" crops_name="+crops_name
+	,"fn_callback");
+};
+/*************************************************** [[ 출고 ]] ***************************************************/
+
+
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_sal_update" width="770" height="480" titletext="New Form" onload="Form_sal_update_onload" oninit="Form_sal_update_oninit">
+    <Layouts>
+      <Layout height="480" mobileorientation="landscape" width="770">
+        <Static id="lb_sal_update" taborder="0" text="급여 수정" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_sal_date_bg" taborder="1" left="10" top="48" width="750" height="70" background="#D6DCE5" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 20px" textAlign="left" verticalAlign="middle"/>
+        <Static id="lb_sal_date" taborder="2" text="적용일" left="52" top="68" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Calendar id="cal_sal_date" taborder="3" left="127" top="66" width="200" height="35" type="normal"/>
+        <Button id="btn_sal_update" taborder="4" text="수정" left="660" top="436" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="btn_sal_update_onclick"/>
+        <Grid id="grid_salList" taborder="5" left="10" top="190" width="370" height="236" binddataset="ds_salList">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="110"/>
+                <Column size="118"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="급여코드"/>
+                <Cell col="1" text="급여항목"/>
+                <Cell col="2" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:급여코드"/>
+                <Cell col="1" text="bind:급여항목"/>
+                <Cell col="2" text="bind:금액" displaytype="currency" edittype="mask"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" text="expr:dataset.getSum(&quot;금액&quot;)" displaytype="currency"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grid_taxList" taborder="6" left="390" top="190" width="370" height="236" binddataset="ds_taxList">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="112"/>
+                <Column size="114"/>
+                <Column size="142"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="원천징수 코드"/>
+                <Cell col="1" text="원천징수 항목"/>
+                <Cell col="2" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:원천징수 코드"/>
+                <Cell col="1" text="bind:원천징수 항목"/>
+                <Cell col="2" text="bind:금액" displaytype="currency" edittype="mask"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" text="expr:dataset.getSum(&quot;금액&quot;)" displaytype="currency"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="lb_dept" taborder="7" text="부서" left="15" top="135" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Static id="lb_rank" taborder="8" text="직급" left="272" top="135" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Static id="lb_emp_name" taborder="9" text="사원명" left="520" top="135" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Edit id="edit_dept" taborder="10" left="60" top="133" width="180" height="35" enable="false"/>
+        <Edit id="edit_rank" taborder="11" left="320" top="133" width="180" height="35" enable="false"/>
+        <Edit id="edit_emp_name" taborder="12" left="580" top="133" width="180" height="35" enable="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_salList">
+        <ColumnInfo>
+          <Column id="급여코드" type="STRING" size="256"/>
+          <Column id="급여항목" type="STRING" size="256"/>
+          <Column id="금액" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="급여항목">기본급</Col>
+            <Col id="급여코드">C100</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">식대</Col>
+            <Col id="급여코드">C101</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">상여</Col>
+            <Col id="급여코드">C102</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">월차수당</Col>
+            <Col id="급여코드">C103</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">기타수당</Col>
+            <Col id="급여코드">C104</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">자가운전 보조금</Col>
+            <Col id="급여코드">C105</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_taxList">
+        <ColumnInfo>
+          <Column id="원천징수 코드" type="STRING" size="256"/>
+          <Column id="원천징수 항목" type="STRING" size="256"/>
+          <Column id="금액" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="원천징수 항목">소득세</Col>
+            <Col id="원천징수 코드">D100</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">주민세</Col>
+            <Col id="원천징수 코드">D101</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">국민연금</Col>
+            <Col id="원천징수 코드">D102</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">건강보험</Col>
+            <Col id="원천징수 코드">D103</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">장기요양보험</Col>
+            <Col id="원천징수 코드">D104</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_salaryUpd">
+        <ColumnInfo>
+          <Column id="SALARY_CK" type="STRING" size="256"/>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="RANK_NAME" type="STRING" size="256"/>
+          <Column id="SALARY_AMOUNT" type="INT" size="256"/>
+          <Column id="EMP_ENDATE" type="STRING" size="256"/>
+          <Column id="SALARY_NOTE" type="STRING" size="256"/>
+          <Column id="SALARY_NO" type="STRING" size="256"/>
+          <Column id="SALARY_DATE" type="STRING" size="256"/>
+          <Column id="SALARY_C100" type="INT" size="256"/>
+          <Column id="SALARY_C101" type="INT" size="256"/>
+          <Column id="SALARY_C102" type="INT" size="256"/>
+          <Column id="SALARY_C103" type="INT" size="256"/>
+          <Column id="SALARY_C104" type="INT" size="256"/>
+          <Column id="SALARY_C105" type="INT" size="256"/>
+          <Column id="SALARY_D100" type="INT" size="256"/>
+          <Column id="SALARY_D101" type="INT" size="256"/>
+          <Column id="SALARY_D102" type="INT" size="256"/>
+          <Column id="SALARY_D103" type="INT" size="256"/>
+          <Column id="SALARY_D104" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	//alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		return; 
+	}
+	if(svcID == "salarySelect"){
+		//this.alert("salarySelect Success");
+	}
+	if(svcID == "salaryUpdate"){
+		//this.alert("salarySelect Success");
+	}
+}
+
+var objApp = nexacro.getApplication();
+var objVar = objApp.gb_salUpdNo; //급여번호
+this.transaction("salarySelect" ,"SvcURL::hr/salarySelect.psp?p_salaryNo="+objVar ,"in_salaryList=ds_salaryUpd" ,"ds_salaryUpd=out_salaryList" ,"급여1건조회" ,"fn_callback");
+
+this.Form_sal_update_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	alert("자식창_선택된 급여번호 : "+objVar);
+	
+	this.cal_sal_date.set_value(this.ds_salaryUpd.getColumn(0,"SALARY_DATE"));
+	this.edit_dept.set_value(this.ds_salaryUpd.getColumn(0,"DEPT_NAME"));
+	this.edit_rank.set_value(this.ds_salaryUpd.getColumn(0,"RANK_NAME"));
+	this.edit_emp_name.set_value(this.ds_salaryUpd.getColumn(0,"EMP_NAME"));
+	
+	this.ds_salList.setColumn(0,2,this.ds_salaryUpd.getColumn(0,10));
+	this.ds_salList.setColumn(1,2,this.ds_salaryUpd.getColumn(0,11));
+	this.ds_salList.setColumn(2,2,this.ds_salaryUpd.getColumn(0,12));
+	this.ds_salList.setColumn(3,2,this.ds_salaryUpd.getColumn(0,13));
+	this.ds_salList.setColumn(4,2,this.ds_salaryUpd.getColumn(0,14));
+	this.ds_salList.setColumn(5,2,this.ds_salaryUpd.getColumn(0,15));
+	
+	this.ds_taxList.setColumn(0,2,this.ds_salaryUpd.getColumn(0,16));
+	this.ds_taxList.setColumn(1,2,this.ds_salaryUpd.getColumn(0,17));
+	this.ds_taxList.setColumn(2,2,this.ds_salaryUpd.getColumn(0,18));
+	this.ds_taxList.setColumn(3,2,this.ds_salaryUpd.getColumn(0,19));
+	this.ds_taxList.setColumn(4,2,this.ds_salaryUpd.getColumn(0,20));
+};
+
+this.btn_sal_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var p_salaryDate = this.cal_sal_date.value;
+	
+	var p_c100 = this.ds_salList.getColumn(0,2);
+	var p_c101 = this.ds_salList.getColumn(1,2);
+	var p_c102 = this.ds_salList.getColumn(2,2);
+	var p_c103 = this.ds_salList.getColumn(3,2);
+	var p_c104 = this.ds_salList.getColumn(4,2);
+	var p_c105 = this.ds_salList.getColumn(5,2);
+	
+	var p_d100 = this.ds_taxList.getColumn(0,2);
+	var p_d101 = this.ds_taxList.getColumn(1,2);
+	var p_d102 = this.ds_taxList.getColumn(2,2);
+	var p_d103 = this.ds_taxList.getColumn(3,2);
+	var p_d104 = this.ds_taxList.getColumn(4,2);
+	
+	this.transaction("salaryUpdate" ,"SvcURL::hr/salaryUpdate.psp?p_salaryDate="+p_salaryDate
+	+"&p_salaryNo="+objVar
+	
+	+"&p_c100="+p_c100
+	+"&p_c101="+p_c101
+	+"&p_c102="+p_c102
+	+"&p_c103="+p_c103
+	+"&p_c104="+p_c104
+	+"&p_c105="+p_c105
+	
+	+"&p_d100="+p_d100
+	+"&p_d101="+p_d101
+	+"&p_d102="+p_d102
+	+"&p_d103="+p_d103
+	+"&p_d104="+p_d104
+	,"" ,"ds_salaryList=out_salaryList" ,"급여수정" ,"fn_callback");
+};
+
+]]></Script>
+  </Form>
+</FDL>
