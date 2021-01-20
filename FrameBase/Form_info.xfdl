@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_info" width="440" height="440" titletext="New Form">
+    <Layouts>
+      <Layout height="440" mobileorientation="landscape" width="440">
+        <Static id="lb_emp_pw_update" taborder="0" text="비밀번호 변경" left="0" top="0" width="440" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_crops_create_main" taborder="1" left="10" top="50" width="420" height="336" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_emp_no" taborder="2" text="사원번호" left="35" top="78" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_no" taborder="3" left="190" top="76" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_name" taborder="4" text="사원명" left="35" top="140" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_name" taborder="5" left="190" top="138" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Button id="btn_emp_pw_update" taborder="6" text="변경하기" left="330" top="396" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+        <Static id="lb_emp_pw_after" taborder="7" text="변경 비밀번호" left="35" top="264" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_pw_after" taborder="8" left="190" top="262" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_pw_check" taborder="9" text="변경 비밀번호 확인" left="35" top="326" width="135" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_pw_check" taborder="10" left="190" top="324" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_pw_before" taborder="11" text="현재 비밀번호" left="35" top="202" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_pw_before" taborder="12" left="190" top="200" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

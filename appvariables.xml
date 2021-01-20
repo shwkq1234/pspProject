@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppVariables version="2.0">
+  <Datasets>
+    <Dataset id="gb_login">
+      <ColumnInfo>
+        <Column id="EMP_NO" type="STRING" size="256"/>
+        <Column id="EMP_PW" type="STRING" size="256"/>
+        <Column id="EMP_NAME" type="STRING" size="256"/>
+        <Column id="DEPT_NAME" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gb_deptList">
+      <ColumnInfo>
+        <Column id="DEPT_NO" type="STRING" size="256"/>
+        <Column id="DEPT_NAME" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gb_rankList">
+      <ColumnInfo>
+        <Column id="RANK_NO" type="STRING" size="256"/>
+        <Column id="RANK_NAME" type="STRING" size="256"/>
+        <Column id="RANK_USE" type="STRING" size="256"/>
+        <Column id="RANK_NOTE" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gb_empList">
+      <ColumnInfo>
+        <Column id="EMP_NO" type="STRING" size="256"/>
+        <Column id="EMP_NAME" type="STRING" size="256"/>
+        <Column id="EMP_BIRTH" type="STRING" size="256"/>
+        <Column id="EMP_NUM" type="STRING" size="256"/>
+        <Column id="EMP_ADDRESS" type="STRING" size="256"/>
+        <Column id="EMP_EMAIL" type="STRING" size="256"/>
+        <Column id="EMP_ACCNUM" type="STRING" size="256"/>
+        <Column id="EMP_ACCNAME" type="STRING" size="256"/>
+        <Column id="EMP_ACCHOLDER" type="STRING" size="256"/>
+        <Column id="RANK_NO" type="STRING" size="256"/>
+        <Column id="POSITION_NO" type="STRING" size="256"/>
+        <Column id="DEPT_NO" type="STRING" size="256"/>
+        <Column id="ENT_NO" type="STRING" size="256"/>
+        <Column id="EMP_PW" type="STRING" size="256"/>
+        <Column id="EMP_NOTE" type="STRING" size="256"/>
+        <Column id="EMP_ENDATE" type="STRING" size="256"/>
+        <Column id="EMP_ADDRCODE" type="STRING" size="256"/>
+        <Column id="EMP_BEFORE_NO" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gb_positionList">
+      <ColumnInfo>
+        <Column id="PS_CK" type="STRING" size="256"/>
+        <Column id="PS_NO" type="STRING" size="256"/>
+        <Column id="PS_NAME" type="STRING" size="256"/>
+        <Column id="PS_USE" type="STRING" size="256"/>
+        <Column id="PS_NOTE" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="ds_dealList">
+      <ColumnInfo>
+        <Column id="DEAL_CK" type="STRING" size="256"/>
+        <Column id="DEAL_DATE" type="STRING" size="256"/>
+        <Column id="DEAL_TYPE" type="STRING" size="256"/>
+        <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+        <Column id="ACCOUNT_REP" type="STRING" size="256"/>
+        <Column id="CROPS_M" type="STRING" size="256"/>
+        <Column id="DEAL_AMOUNT" type="INT" size="256"/>
+        <Column id="CROPS_UNIT" type="STRING" size="256"/>
+        <Column id="DEAL_UNITPRICE" type="INT" size="256"/>
+        <Column id="DEAL_TOTAL" type="INT" size="256" prop="SUM"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="DEAL_TYPE">매출거래</Col>
+          <Col id="ACCOUNT_NAME">야채가게</Col>
+          <Col id="ACCOUNT_REP">김당근</Col>
+          <Col id="CROPS_M">고구마</Col>
+          <Col id="DEAL_AMOUNT">1000</Col>
+          <Col id="CROPS_UNIT">KG</Col>
+          <Col id="DEAL_UNITPRICE">4400</Col>
+        </Row>
+        <Row>
+          <Col id="DEAL_TYPE">매입거래</Col>
+          <Col id="ACCOUNT_NAME">농민마트</Col>
+          <Col id="ACCOUNT_REP">이버섯</Col>
+          <Col id="CROPS_M">감자</Col>
+          <Col id="DEAL_AMOUNT">3000</Col>
+          <Col id="CROPS_UNIT">KG</Col>
+          <Col id="DEAL_UNITPRICE">1600</Col>
+        </Row>
+        <Row>
+          <Col id="DEAL_TYPE">매출거래</Col>
+          <Col id="ACCOUNT_NAME">방울상회</Col>
+          <Col id="ACCOUNT_REP">박배추</Col>
+          <Col id="CROPS_M">콩</Col>
+          <Col id="DEAL_AMOUNT">2000</Col>
+          <Col id="CROPS_UNIT">KG</Col>
+          <Col id="DEAL_UNITPRICE">1600</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+    <Dataset id="ds_stockList">
+      <ColumnInfo>
+        <Column id="STOCK_CK" type="STRING" size="256"/>
+        <Column id="CROPS_NO" type="INT" size="256"/>
+        <Column id="CROPS_NAME" type="STRING" size="256"/>
+        <Column id="CROPS_UNIT" type="STRING" size="256"/>
+        <Column id="IN_AMOUNT" type="INT" size="256"/>
+        <Column id="OUT_AMOUNT" type="INT" size="256"/>
+        <Column id="STOCK_AMOUNT" type="INT" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="CROPS_NO">123</Col>
+          <Col id="CROPS_NAME">고구마</Col>
+          <Col id="CROPS_UNIT">kg</Col>
+          <Col id="IN_AMOUNT">20</Col>
+          <Col id="OUT_AMOUNT">13</Col>
+        </Row>
+        <Row/>
+      </Rows>
+    </Dataset>
+    <Dataset id="gb_use">
+      <ColumnInfo>
+        <Column id="use_name" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="use_name">사용</Col>
+        </Row>
+        <Row>
+          <Col id="use_name">미사용</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+  </Datasets>
+  <Variables>
+    <Variable id="gb_deptNo"/>
+    <Variable id="gb_deptName"/>
+    <Variable id="gb_rankNo"/>
+    <Variable id="gb_rankName"/>
+    <Variable id="gb_salUpdNo"/>
+    <Variable id="gb_deptUse"/>
+    <Variable id="gb_deptNote"/>
+    <Variable id="gb_rankUse"/>
+    <Variable id="gb_rankNote"/>
+    <Variable id="gb_positionUse"/>
+    <Variable id="gb_positionNote"/>
+    <Variable id="gb_zipCode"/>
+    <Variable id="gb_zipAddress"/>
+    <Variable id="gb_zipNo"/>
+    <Variable id="gb_empUNo"/>
+  </Variables>
+</AppVariables>

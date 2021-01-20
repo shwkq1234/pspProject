@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_commute" width="1280" height="670" onload="Form_commute_onload">
+    <Layouts>
+      <Layout height="670" mobileorientation="landscape" width="1280">
+        <Div id="div_commute" taborder="0" left="0" top="0" width="1280" height="670" text="">
+          <Layouts>
+            <Layout>
+              <Static id="lb_commute" taborder="0" text="출퇴근 관리" left="0" top="0" width="1280" height="35" background="#333F50" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="#ffffff" padding="0px 0px 0px 10px"/>
+              <WebBrowser id="WebBrowser00" taborder="1" left="175" top="90" width="910" height="530" onloadcompleted="div_commute_WebBrowser00_onloadcompleted"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[var _win;
+this.Form_commute_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var domain = document.location.href;
+	var arrdomain = domain.split('/');
+	var currentfile = arrdomain.pop();
+	domain = domain.replace(currentfile, "calendar/conference.jsp")
+	this.div_commute.form.WebBrowser00.set_url(domain);
+};
+this.div_commute_WebBrowser00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+
+	_win = this.div_commute.form.WebBrowser00.getProperty('window');
+};
+
+]]></Script>
+  </Form>
+</FDL>

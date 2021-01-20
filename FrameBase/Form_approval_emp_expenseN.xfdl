@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_approval_emp_expense" width="770" height="630" titletext="New Form" onload="Form_approval_insert_onload">
+    <Layouts>
+      <Layout height="630" mobileorientation="landscape" width="770">
+        <Static id="lb_approval_emp_expense" taborder="0" text="품의서 작성" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_approval_emp_expense_center" taborder="1" left="10" top="48" width="750" height="528" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_approval_doc_no" taborder="2" text="문서번호" left="31" top="70" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_approval_doc_no" taborder="3" left="136" top="68" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_approval_preserve" taborder="4" text="보존기한" left="451" top="70" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Combo id="cb_approval_preserve" taborder="5" left="556" top="68" width="180" height="35" innerdataset="ds_approval_preserveList" codecolumn="num" datacolumn="year" onitemchanged="cb_approval_preserve_onitemchanged"/>
+        <Static id="lb_approval_dept" taborder="6" text="기안부서" left="31" top="120" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_approval_dept" taborder="7" left="136" top="118" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_approval_writer" taborder="8" text="기안자" left="451" top="120" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_approval_writer" taborder="9" left="556" top="118" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_approval_title" taborder="10" text="제목" left="31" top="166" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_approval_title" taborder="11" left="136" top="164" width="600" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <TextArea id="text_approval_write" taborder="12" left="31" top="212" width="705" height="348"/>
+        <Static id="lb_approver" taborder="13" text=" 결재자" left="11" top="588" width="60" height="30"/>
+        <Button id="btn_approver_search" taborder="14" left="60" top="588" width="30" height="30" border="0px none transparent" color="transparent" visible="true" icon="url('imagerc::search.png')" onclick="btn_approver_search_onclick"/>
+        <Edit id="edit_approver" taborder="15" left="90" top="586" width="180" height="35"/>
+        <Button id="btn_approval_emp_temporarily" taborder="16" text="임시보관" left="540" top="586" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+        <Button id="btn_approval_emp_expense" taborder="17" text="기안상신" left="660" top="586" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+        <PopupDiv id="popdiv_approver_search" visible="false" left="797" top="270" width="400" height="400" background="#ffffff">
+          <Layouts>
+            <Layout>
+              <Static id="lb_approver_search" taborder="0" text="결재자 조회" left="0" top="0" width="400" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+              <Button id="btn_approver_search_close" taborder="1" left="362" top="5" width="30" height="30" background="transparent" border="0px none transparent" icon="url('imagerc::close.png')" onclick="popdiv_approver_search_btn_approver_search_close_onclick"/>
+              <Static id="lb_approver_search_center" taborder="2" left="10" top="58" width="380" height="280" background="#EDEFF3" border="0px none transparent" text=""/>
+              <Edit id="edit_emp_name_search" taborder="3" left="124" top="78" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+              <Static id="lb_emp_name" taborder="4" text="사원명" left="23" top="80" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+              <Button id="btn_approver_search" taborder="5" text="검색" left="320" top="78" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+              <Button id="btn_approver_add" taborder="6" text="등록" left="290" top="353" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" visible="true"/>
+              <Grid id="grid_approverList" taborder="7" left="23" top="125" width="357" height="205" binddataset="ds_approverList">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="130"/>
+                      <Column size="100"/>
+                      <Column size="125"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사원코드"/>
+                      <Cell col="1" text="사원명"/>
+                      <Cell col="2" text="직급"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:사원코드"/>
+                      <Cell col="1" text="bind:사원명"/>
+                      <Cell col="2" text="bind:직급"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_approval_preserveList">
+        <ColumnInfo>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="year" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="num">0</Col>
+            <Col id="year">1년</Col>
+          </Row>
+          <Row>
+            <Col id="num">1</Col>
+            <Col id="year">2년</Col>
+          </Row>
+          <Row>
+            <Col id="num">2</Col>
+            <Col id="year">3년</Col>
+          </Row>
+          <Row>
+            <Col id="num">3</Col>
+            <Col id="year">4년</Col>
+          </Row>
+          <Row>
+            <Col id="num">4</Col>
+            <Col id="year">5년</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_approverList">
+        <ColumnInfo>
+          <Column id="사원코드" type="STRING" size="256"/>
+          <Column id="사원명" type="STRING" size="256"/>
+          <Column id="직급" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="사원코드"/>
+            <Col id="사원명"/>
+            <Col id="직급">사장</Col>
+          </Row>
+          <Row>
+            <Col id="사원코드"/>
+            <Col id="사원명"/>
+            <Col id="직급">이사</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_approver_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.popdiv_approver_search.trackPopup(400,160,400,400);	
+};
+
+this.popdiv_approver_search_btn_approver_search_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.popdiv_approver_search.closePopup("Close");			
+};
+]]></Script>
+  </Form>
+</FDL>

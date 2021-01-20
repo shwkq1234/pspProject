@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_login" width="1280" height="670" titletext="New Form" background="#EDEFF3" onload="Form_login_onload">
+    <Layouts>
+      <Layout height="670" mobileorientation="landscape" width="1280">
+        <ImageViewer id="img_logo_center" taborder="0" left="456" top="20" width="368" height="365" image="url('imagerc::logo1.png')" background="transparent" border="0px none transparent"/>
+        <Button id="btn_login" taborder="1" text="로그인" left="770" top="466" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_emp_btn_emp_add_onclick" visible="true"/>
+        <Edit id="ed_empno" taborder="2" left="550" top="405" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_login_id" taborder="3" text="사원번호" left="465" top="407" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" onchanged="Common_onchanged" visible="true"/>
+        <Static id="lb_login_pw" taborder="4" text="비밀번호" left="465" top="468" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" onchanged="Common_onchanged" visible="true"/>
+        <Edit id="ed_emppw" taborder="5" left="550" top="466" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_mem">
+        <ColumnInfo>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="EMP_PW" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.div_emp_btn_emp_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//var objApp = nexacro.getApplication();
+	//var objDs = objApp.Dataset;
+	//trace(objDs.saveXML());
+	///////////////////////////////////////////////
+	
+	var objApp = nexacro.getApplication();
+	var objDs = objApp.gd_login;
+	//var objVr = objApp.gv_empno;	
+	//var objVr2 = objApp.gv_salno;
+	
+	//trace(objDs.saveXML()); //개발자도구 콘솔창에서 확인가능
+	//alert(objDs.getColumn(0,0)); // var로 선언한 변수명을 통해 데이터셋에 접근 가능.
+	//alert(objDs.getColumn(0,1));
+	//trace(objVr.saveXML());
+	//alert(objVr);
+	//alert(objVr2);
+	///////////////////////////////////////////
+
+	var p_empno = this.ed_empno.value;
+	var p_emppw = this.ed_emppw.value;
+	
+	//this.ds_mem.addRow();
+	//this.ds_mem.setColumn(0, 0, p_empno);
+	//this.ds_mem.setColumn(0, 1, p_emppw);
+	
+	//alert(this.ds_mem.getColumn(0,0) + ", " + this.ds_mem.getColumn(0,1));
+	this.transaction("login" ,"SvcURL::member/login.psp?p_empno="+p_empno+"&p_emppw="+p_emppw, "" , "gb_login=out_login" ,"" ,"fn_callback");
+};
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	//errCD가 서버에서 nErrorCode  = 0, errMSG가 strErrorMsg = "login SUCC";
+	alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		return; 
+	}
+	if(svcID == "login"){
+		this.alert("Login Success");
+		this.go("FrameBase::Form_main.xfdl");
+	}
+}
+// 서버로 부터 전달된 데이터가 없을 경우 
+// (서버에서 HttpPlatformResponse 자체를 실행하지 않음)에는
+// ErrorCode 는 -1 값으로, ErrorMsg 는 "Stream Data is null!" 값으로 설정된 후,
+// 콜백 함수가 호출
+
+//var test ='';
+//test = this.ds_rankList.getColumn(0,1);
+//alert("test : " + test);
+//getColumn의 row는 0부터 시작. col도 0부터 시작
+//getColumn(row(int), "컬럼명") 방법1
+//getColumn(row(int), col(int)) 방법2
+//getColumn(row(int)) 방법3. 이때 컬럼은 0번째 인덱스로 고정되는 듯함.
+
+//alert(this.ds_test.getColumn(1,"t1")); //y1
+//alert(this.ds_test.getColumn(0,"t1")); //t1
+//alert(this.ds_test.getColumn(1,1)); //y2
+//alert(this.ds_test.getColumn(0,1)); //t2
+//alert(this.ds_test.getColumn(2,"t2")); //z2
+//alert(this.ds_test.getColumn(0)); //t1
+//alert(this.ds_test.getColumn(1)); //y1
+//alert(this.ds_test.getColumn(2)); //z1
+
+this.Form_login_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ed_empno.set_value("210101");
+	this.ed_emppw.set_value("kosmo");
+};
+]]></Script>
+  </Form>
+</FDL>

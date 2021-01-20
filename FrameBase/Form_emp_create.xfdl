@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_emp_create" width="770" height="620" titletext="New Form" onload="Form_emp_create_onload">
+    <Layouts>
+      <Layout height="620" mobileorientation="landscape" width="770">
+        <Static id="lb_emp_create" taborder="0" text="사원 등록" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_emp_create_center" taborder="1" left="10" top="50" width="750" height="516" background="#EDEFF3" border="0px none transparent" text=""/>
+        <Static id="lb_emp_no" taborder="2" text="사원번호" left="24" top="79" width="80" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_no" taborder="3" left="140" top="77" width="180" height="35" inputtype="normal"/>
+        <Button id="btn_emp_no_check" taborder="4" text="중복확인" left="330" top="77" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_emp_btn_emp_upd_onclick" visible="true"/>
+        <Static id="lb_emp_name" taborder="5" text="사원명" left="479" top="79" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_name" taborder="6" left="569" top="77" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_birth" taborder="7" text="주민등록번호" left="24" top="137" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_birth" taborder="8" left="140" top="135" width="180" height="35" visible="true"/>
+        <Static id="lb_emp_num" taborder="9" text="핸드폰" left="479" top="137" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_num" taborder="10" left="569" top="135" width="180" height="35" visible="true" inputtype="normal"/>
+        <Static id="lb_emp_email" taborder="11" text="Email" left="24" top="197" width="100" height="30" textAlign="left" onclick="Static00_00_00_00_00_onclick" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_email" taborder="12" left="140" top="195" width="180" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_date" taborder="13" text="입사일" left="479" top="197" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Calendar id="cal_emp_date" taborder="14" left="569" top="195" width="180" height="35" type="normal"/>
+        <Static id="lb_emp_address" taborder="15" text="주소" left="24" top="257" width="100" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Static id="lb_emp_zipcode" taborder="16" text="우편번호" left="140" top="257" width="59" height="30" textAlign="left" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black" visible="true"/>
+        <Edit id="edit_emp_zipcode_search" taborder="17" left="210" top="255" width="110" height="35" visible="true" inputtype="normal"/>
+        <Button id="btn_emp_zipcode_search" taborder="18" text="찾기" left="330" top="255" width="60" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="btn_emp_zipcode_search_onclick" visible="true"/>
+        <Edit id="edit_emp_address" taborder="19" left="140" top="301" width="455" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_line" taborder="20" left="20" top="355" width="730" height="1" background="#242D40" enable="false" enableevent="false"/>
+        <Static id="lb_emp_accname" taborder="21" text="은행명" left="24" top="384" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Edit id="edit_emp_accname" taborder="22" left="89" top="382" width="150" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_accnum" taborder="23" text="계좌번호" left="24" top="445" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Edit id="edit_emp_accnum" taborder="24" left="89" top="443" width="300" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true" inputtype="normal"/>
+        <Static id="lb_emp_accholder" taborder="25" text="예금주명" left="272" top="384" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Edit id="edit_emp_accholder" taborder="26" left="344" top="382" width="150" height="35" font="12px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Static id="lb_emp_dept_name" taborder="27" text="부서" left="24" top="506" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Combo id="combo_emp_dept_name" taborder="28" left="89" top="504" width="150" height="35" value="" index="-1" innerdataset="gb_deptList" datacolumn="DEPT_NAME" codecolumn="DEPT_NO"/>
+        <Static id="lb_emp_rank_name" taborder="29" text="직급" left="273" top="506" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Combo id="combo_emp_rank_name" taborder="30" left="344" top="504" width="150" height="35" value="" index="-1" innerdataset="gb_rankList" datacolumn="RANK_NAME" codecolumn="RANK_NO"/>
+        <Static id="lb_emp_position_name" taborder="31" text="직책" left="522" top="506" width="100" height="30" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" textAlign="left" visible="true"/>
+        <Combo id="combo_emp_position_name" taborder="32" left="599" top="504" width="150" height="35" value="" index="-1" innerdataset="gb_positionList" datacolumn="PS_NAME" codecolumn="PS_NO"/>
+        <Button id="btn_emp_create" taborder="33" text="등록" left="660" top="576" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_emp_btn_emp_add_onclick" visible="true"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_emp_zipcode_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("우편번호 조회");
+	//var objChildFrame = new ChildFrame();//ChildFrame생성
+	//objChildFrame.init("popup_zipcode"
+	//                  , 200//x좌표
+	//				  , 100//y좌표
+	//				  , 402//가로
+	//				  , 420//높이
+	//				  , null
+	//				  , null
+	//				  , "FrameBase::Form_zipcode.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    //this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	//this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	//this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	//objChildFrame.show();
+	
+		//popup 화면으로 전달할 값
+	var oArg = {};
+	
+	var sPopupUrl = "";
+	var sPopupId = "";
+	//if(this.formType == "search")
+	//{
+	//	sPopupId = "searchapi";
+	//	sPopupUrl = "learn::jusoapisearchpop_popup.xfdl";
+	//}
+	
+	//modal popup open call
+	this.gfn_showModal("popup_zipcode", oArg, "FrameBase::Form_zipcode.xfdl"
+	, "popupCallBack", this, 200, 100, 402, 420);
+};
+
+//popup call back
+this.popupCallBack = function(sFormId, sArg)
+{
+	if(sFormId=="popup_zipcode")
+	{
+		if(!this.gfn_isNull(sArg))
+		{
+			var addData = sArg.split(",");
+			this.edit_emp_zipcode_search.set_value(addData[0]);
+			this.edit_emp_address.set_value(addData[1]);
+			this.edtAddressDetail.setFocus();
+		}		
+	}
+}
+
+this.gfn_isNull = function (pvVal)
+{
+	if (new String(pvVal).valueOf() == "undefined") 
+	{
+		return true;
+	}
+	if (pvVal == null) 
+	{
+		return true;
+	}
+	if (("x" + pvVal == "xNaN") && (new String(pvVal.length).valueOf() == "undefined")) 
+	{
+		return true;
+	}
+	if (pvVal.length == 0) 
+	{
+		return true;
+	}
+
+	return false;
+}
+
+//옵션 간소화 팝업
+this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, obj, nPopupLeft, nPopupTop, nPopupWidth, nPopupHeight)
+{
+	// child frame 생성
+	var childFrame = new ChildFrame();
+	
+	// parent frame 정의
+	var parentFrame = obj.getOwnerFrame();
+	
+	//child frame 초기화
+	childFrame.init(sPopupId, nPopupLeft, nPopupTop, nPopupWidth, nPopupHeight, null, null, sPopupUrl);
+	
+	// Modal Dialog 추가 옵션
+	//autosize default true
+	childFrame.set_autosize(false);	
+	//statusbar default true
+	childFrame.set_showtitlebar(false);
+	
+	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
+	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
+};
+
+this.div_emp_btn_emp_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("사원번호 중복검사");
+	var p_empNo = this.edit_emp_no.value;
+	if(p_empNo == undefined || p_empNo == "") {
+		alert("사원번호를 입력하시오");
+		return;
+	}
+	this.transaction("empCheck" ,"SvcURL::hr/empCheck.psp","" ,"" ,"p_empNo="+p_empNo ,"fn_callback");
+};
+
+var check = 0;
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		check = 0;
+		return; 
+	}
+	if(svcID == "empCheck"){
+		//this.alert("empCheck Success");
+		check = 1;
+	}
+}
+
+var objApp = nexacro.getApplication();
+var objDs = objApp.gb_empList;
+objDs.addRow();
+	
+this.div_emp_btn_emp_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	objDs.setColumn(0, "EMP_NO", this.edit_emp_no.value);
+		alert("입력한 사원번호 : "+objDs.getColumn(0, "EMP_NO"));
+	objDs.setColumn(0, "EMP_NAME", this.edit_emp_name.value);
+	objDs.setColumn(0, "EMP_BIRTH", this.edit_emp_birth.value);
+	objDs.setColumn(0, "EMP_NUM", this.edit_emp_num.value);
+	objDs.setColumn(0, "EMP_EMAIL", this.edit_emp_email.value);
+	objDs.setColumn(0, "EMP_ENDATE", this.cal_emp_date.value);
+	objDs.setColumn(0, "EMP_ADDRCODE", this.edit_emp_zipcode_search.value);
+	objDs.setColumn(0, "EMP_ADDRESS", this.edit_emp_address.value);
+	objDs.setColumn(0, "EMP_ACCNAME", this.edit_emp_accname.value);
+	objDs.setColumn(0, "EMP_ACCHOLDER", this.edit_emp_accholder.value);
+	objDs.setColumn(0, "EMP_ACCNUM", this.edit_emp_accnum.value);
+	objDs.setColumn(0, "DEPT_NO", this.combo_emp_dept_name.value);
+	objDs.setColumn(0, "RANK_NO", this.combo_emp_rank_name.value);
+	objDs.setColumn(0, "POSITION_NO", this.combo_emp_position_name.value);	
+	this.transaction("empInsert" ,"SvcURL::hr/empInsert.psp","in_empList=gb_empList" ,"gb_empList=out_empList" ,"" ,"fn_callback");
+};
+
+this.Form_emp_create_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.edit_emp_name.set_value("");
+	this.edit_emp_birth.set_value(000101);
+	this.edit_emp_num.set_value(210118);
+	this.edit_emp_email.set_value("abc123@naver.com");
+	this.cal_emp_date.set_value("20210118");
+	this.edit_emp_zipcode_search.set_value("12345");
+	this.edit_emp_address.set_value("서울특별시 가구 나동 다주택");
+	this.edit_emp_accname.set_value("가은행");
+	this.edit_emp_accholder.set_value("아무개");
+	this.edit_emp_accnum.set_value("0123456789");
+
+	this.transaction("selectDept" ,"SvcURL::hr/deptSelect.psp" ,"in_deptList=gb_deptList" ,"gb_deptList=out_deptList" ,"" ,"fn_callback");
+	this.transaction("selectRank" ,"SvcURL::hr/rankSelect.psp" ,"in_rankList=gb_rankList" ,"gb_rankList=out_rankList" ,"" ,"fn_callback");
+	this.transaction("selectPosition" ,"SvcURL::hr/positionSelect.psp" ,"in_positionList=gb_positionList" ,"gb_positionList=out_positionList" ,"" ,"fn_callback");
+};
+]]></Script>
+  </Form>
+</FDL>

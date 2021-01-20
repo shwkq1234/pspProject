@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_sal_create" width="770" height="480" titletext="New Form" onload="Form_sal_create_onload">
+    <Layouts>
+      <Layout height="480" mobileorientation="landscape" width="770">
+        <Static id="lb_sal_create" taborder="0" text="급여 등록" left="0" top="0" width="770" height="40" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px" visible="true"/>
+        <Static id="lb_sal_date_bg" taborder="1" left="10" top="48" width="750" height="70" background="#D6DCE5" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 20px" textAlign="left" verticalAlign="middle"/>
+        <Static id="lb_sal_date" taborder="2" text="적용일" left="52" top="68" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Calendar id="cal_sal_date" taborder="3" left="127" top="66" width="200" height="35" type="normal"/>
+        <Button id="btn_sal_create" taborder="4" text="등록" left="660" top="436" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="btn_sal_create_onclick"/>
+        <Grid id="grid_salList" taborder="5" left="10" top="190" width="370" height="235" binddataset="ds_salList">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="110"/>
+                <Column size="118"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="급여코드"/>
+                <Cell col="1" text="급여항목"/>
+                <Cell col="2" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:급여코드"/>
+                <Cell col="1" text="bind:급여항목"/>
+                <Cell col="2" text="bind:금액" displaytype="currency" edittype="mask"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" text="expr:dataset.getSum(&quot;금액&quot;)" displaytype="currency"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grid_taxList" taborder="6" left="390" top="190" width="370" height="235" binddataset="ds_taxList">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="112"/>
+                <Column size="114"/>
+                <Column size="142"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="원천징수 코드"/>
+                <Cell col="1" text="원천징수 항목"/>
+                <Cell col="2" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:원천징수 코드"/>
+                <Cell col="1" text="bind:원천징수 항목"/>
+                <Cell col="2" text="bind:금액" displaytype="currency" edittype="mask"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" text="expr:dataset.getSum(&quot;금액&quot;)" displaytype="currency"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="lb_dept" taborder="7" text="부서" left="15" top="135" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Static id="lb_rank" taborder="8" text="직급" left="272" top="135" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Static id="lb_emp_name" taborder="9" text="사원명" left="520" top="135" width="60" height="30" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" color="black"/>
+        <Combo id="cb_dept" taborder="10" text="" left="60" top="133" width="180" height="35" value="" index="-1" border="1px solid #242d40" innerdataset="gb_deptList" datacolumn="DEPT_NAME" codecolumn="DEPT_NO" enable="true" onitemchanged="cb_dept_onitemchanged"/>
+        <Combo id="cb_rank" taborder="11" text="" left="320" top="133" width="180" height="35" value="" index="-1" border="1px solid #242d40" innerdataset="gb_rankList" datacolumn="RANK_NAME" codecolumn="RANK_NO" enable="false" onitemchanged="cb_rank_onitemchanged"/>
+        <Combo id="cb_emp_name" taborder="12" text="" left="580" top="133" width="180" height="35" value="" index="-1" border="1px solid #242d40" enable="false" innerdataset="gb_empList" datacolumn="EMP_NAME" codecolumn="EMP_NO"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_salList">
+        <ColumnInfo>
+          <Column id="급여코드" type="STRING" size="256"/>
+          <Column id="급여항목" type="STRING" size="256"/>
+          <Column id="금액" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="급여항목">기본급</Col>
+            <Col id="급여코드">C100</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">식대</Col>
+            <Col id="급여코드">C101</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">상여</Col>
+            <Col id="급여코드">C102</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">월차수당</Col>
+            <Col id="급여코드">C103</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">기타수당</Col>
+            <Col id="급여코드">C104</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="급여항목">자가운전 보조금</Col>
+            <Col id="급여코드">C105</Col>
+            <Col id="금액">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_taxList">
+        <ColumnInfo>
+          <Column id="원천징수 코드" type="STRING" size="256"/>
+          <Column id="원천징수 항목" type="STRING" size="256"/>
+          <Column id="금액" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="원천징수 항목">소득세</Col>
+            <Col id="원천징수 코드">D100</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">주민세</Col>
+            <Col id="원천징수 코드">D101</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">국민연금</Col>
+            <Col id="원천징수 코드">D102</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">건강보험</Col>
+            <Col id="원천징수 코드">D103</Col>
+            <Col id="금액">0</Col>
+          </Row>
+          <Row>
+            <Col id="원천징수 항목">장기요양보험</Col>
+            <Col id="원천징수 코드">D104</Col>
+            <Col id="금액">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_sal_create_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//alert(this.cal_sal_date.value); //날짜
+	//alert("기본급은 : " + this.ds_salList.getColumn(0,2)); //기본급 항목
+	
+	var p_salaryDate = this.cal_sal_date.value;
+	var p_empNo = this.cb_emp_name.value;
+	
+	var p_c100 = this.ds_salList.getColumn(0,2);
+	var p_c101 = this.ds_salList.getColumn(1,2);
+	var p_c102 = this.ds_salList.getColumn(2,2);
+	var p_c103 = this.ds_salList.getColumn(3,2);
+	var p_c104 = this.ds_salList.getColumn(4,2);
+	var p_c105 = this.ds_salList.getColumn(5,2);
+	
+	var p_d100 = this.ds_taxList.getColumn(0,2);
+	var p_d101 = this.ds_taxList.getColumn(1,2);
+	var p_d102 = this.ds_taxList.getColumn(2,2);
+	var p_d103 = this.ds_taxList.getColumn(3,2);
+	var p_d104 = this.ds_taxList.getColumn(4,2);
+	
+	this.transaction("salaryDelete" ,"SvcURL::hr/salaryInsert.psp?p_salaryDate="+p_salaryDate
+	+"&p_empNo="+p_empNo
+	
+	+"&p_c100="+p_c100
+	+"&p_c101="+p_c101
+	+"&p_c102="+p_c102
+	+"&p_c103="+p_c103
+	+"&p_c104="+p_c104
+	+"&p_c105="+p_c105
+	
+	+"&p_d100="+p_d100
+	+"&p_d101="+p_d101
+	+"&p_d102="+p_d102
+	+"&p_d103="+p_d103
+	+"&p_d104="+p_d104
+	,"in_salaryList=ds_salaryList" ,"ds_salaryList=out_salaryList" ,"급여등록" ,"fn_callback");
+};
+
+this.Form_sal_create_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction("selectDept" ,"SvcURL::hr/deptSelect.psp" ,"in_deptList=gb_deptList" ,"gb_deptList=out_deptList" ,"부서조회" ,"fn_callback");
+};
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	//alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		return; 
+	}
+}
+
+this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	//onitemclick으로 하면 안 됨.
+	//onitemchanged로 아이템값이 변경된 후의 값을 가져와야 함.
+	this.cb_rank.set_enable(true);
+	var p_deptNo = this.cb_dept.value;
+	//alert("p_deptNo : " + p_deptNo);
+	this.transaction("selectRank" ,"SvcURL::hr/rankSelect.psp?p_deptNo="+p_deptNo ,"in_rankList=gb_rankList" ,"gb_rankList=out_rankList" ,"직급조회" ,"fn_callback");
+};
+
+this.cb_rank_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.cb_emp_name.set_enable(true);
+	
+	var p_deptNo = this.cb_dept.value;
+	var p_rankNo = this.cb_rank.value;
+	//alert("p_deptNo : " + p_deptNo);
+	//alert("p_rankNo : " + p_rankNo);
+	this.transaction("selectEmp" ,"SvcURL::hr/empSelect.psp?p_rankNo="+p_rankNo+"&p_deptNo="+p_deptNo ,"in_empList=gb_empList" ,"gb_empList=out_empList" ,"사원조회" ,"fn_callback");
+};
+]]></Script>
+  </Form>
+</FDL>

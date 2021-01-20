@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_rank" width="1280" height="670" titletext="New Form" onload="Form_rank_onload">
+    <Layouts>
+      <Layout height="670" mobileorientation="landscape" width="1280">
+        <Div id="div_rank" taborder="0" left="0" top="0" width="1280" height="670">
+          <Layouts>
+            <Layout>
+              <Static id="lb_rank" taborder="0" text="직급 조회" left="0" top="0" width="1280" height="35" background="#333F50" color="#ffffff" font="bold 12pt/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 10px"/>
+              <Static id="lb_rank_search" taborder="1" left="26" top="49" width="1230" height="80" background="#D6DCE5" color="black" font="14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" padding="0px 0px 0px 40px" textAlign="left" verticalAlign="middle"/>
+              <Static id="lb_rank_name" taborder="2" text="직급명" left="72" top="74" width="60" height="30"/>
+              <Edit id="ed_rkName" taborder="3" left="147" top="72" width="200" height="35"/>
+              <Button id="btn_rank_name_search" taborder="4" text="검색" left="426" top="72" width="100" height="34" background="#333F50" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_rank_btn_rank_name_search_onclick"/>
+              <Grid id="grid_rankList" taborder="5" left="26" top="135" width="1230" height="480" binddataset="ds_rankList" onheadclick="div_rank_grid_rankList_onheadclick" color="black">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="230"/>
+                      <Column size="250"/>
+                      <Column size="150"/>
+                      <Column size="498"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="코드"/>
+                      <Cell col="2" text="직급명"/>
+                      <Cell col="3" text="사용구분"/>
+                      <Cell col="4" text="비고"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:RANK_CK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="bind:RANK_NO"/>
+                      <Cell col="2" text="bind:RANK_NAME"/>
+                      <Cell col="3" text="bind:RANK_USE"/>
+                      <Cell col="4" text="bind:RANK_NOTE"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btn_rank_del" taborder="6" text="삭제" left="26" top="626" width="100" height="34" background="#242D40" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_rank_btn_rank_del_onclick"/>
+              <Button id="btn_rank_upd" taborder="7" text="수정" left="1036" top="626" width="100" height="34" background="#242D40" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_rank_btn_rank_upd_onclick"/>
+              <Button id="btn_rank_add" taborder="8" text="직급등록" left="1156" top="626" width="100" height="34" background="#8497B0" border="0px none transparent" color="#ffffff" font="bold 14px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" onclick="div_rank_btn_rank_add_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rankList">
+        <ColumnInfo>
+          <Column id="RANK_CK" type="STRING" size="256"/>
+          <Column id="RANK_NO" type="STRING" size="256"/>
+          <Column id="RANK_NAME" type="STRING" size="256"/>
+          <Column id="RANK_USE" type="STRING" size="256"/>
+          <Column id="RANK_NOTE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/* 체크박스 설정 시작 */
+this.div_rank_grid_rankList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//alert("onheadclick 클릭 이벤트 성공");
+	//체크박스로 설정한 첫 번째 head 컬럼을 클릭했을 경우에 gf_setCheckAll 함수를 호출
+    if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var strColID = obj.getCellProperty("body", e.cell, "text").replace(/bind:/i, "");
+        
+    //체크박스가 체크되어 있으면 체크 해제 
+    //체크되어 있지 않으면 체크
+    this.gv_isCheckAll = (this.gv_isCheckAll ? 0 : 1);
+    
+    //Dataset의 이벤트를 끔
+    //this.Dataset00.enableevent = false;
+    
+    //check to body column
+    for(var i=0; i< this.ds_rankList.getRowCount(); i++)
+    {
+        this.ds_rankList.setColumn(i, strColID, this.gv_isCheckAll);
+    }
+    //check to head column
+    obj.setCellProperty("Head", 0, "text", this.gv_isCheckAll);
+
+    //Dataset의 이벤트를 켬
+    //this.Dataset00.enableevent = true;
+};
+/* 체크박스 설정   끝 */
+
+this.div_rank_btn_rank_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("직급등록");
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_rank_create"
+	                  , 500//x좌표
+					  , 100//y좌표
+					  , 402//가로
+					  , 420//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_rank_create.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();
+};
+
+
+this.div_rank_btn_rank_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var count = 0;
+	alert("직급수정 버튼 클릭");
+	var p_rankNo = '';
+	//var p_deptNoStr = '';
+	for(i=0;i<this.ds_rankList.getRowCount();i++) {
+		var val = this.ds_rankList.getColumn(i,'RANK_CK');
+		//alert("val : "+val);선택된 체크박스값만 1 찍음
+		if(val == 1){
+			count++;
+			p_rankNo  = this.ds_rankList.getColumn(i,'RANK_NO');
+			this.objApp = nexacro.getApplication();
+			this.objApp.gb_rankNo = p_rankNo;
+			this.objApp.gb_rankName = this.ds_rankList.getColumn(i,'RANK_NAME');
+			this.objApp.gb_rankUse = this.ds_rankList.getColumn(i,'RANK_USE');
+			this.objApp.gb_rankNote = this.ds_rankList.getColumn(i,'RANK_NOTE');
+			alert("부모창_선택한 직급번호 : " + this.objApp.gb_rankNo);
+		}
+	}
+	if(count == 0) {
+		alert("수정할 행을 선택하시오.");
+		return;
+	}
+	else if(count > 1) {
+		alert("하나의 행만 선택하시오.");
+		return;
+	}
+	
+	var objChildFrame = new ChildFrame();//ChildFrame생성
+	objChildFrame.init("popup_rank_update"
+	                  , 500//x좌표
+					  , 100//y좌표
+					  , 402//가로
+					  , 420//높이
+					  , null
+					  , null
+					  , "FrameBase::Form_rank_update.xfdl");	
+	/*param1 : id, param2 : 값 */				  
+    this.addChild("childframeNew", objChildFrame);//ChildFrame추가하기
+	this.childframeNew.set_border("1px solid #999999");//모달창 border설정
+	this.childframeNew.set_dragmovetype("normal");//모달창 움직임 여부 설정		
+	objChildFrame.show();	
+};
+
+this.div_rank_btn_rank_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("삭제버튼 클릭");
+	var count = 0;
+	var p_rankNo = '';
+	var p_rankNoStr = '';
+	for(i=0;i<this.ds_rankList.getRowCount();i++){
+		var val = this.ds_rankList.getColumn(i,'RANK_CK');
+		//alert("val : "+val);선택된 체크박스값만 1 찍음
+		if(val == 1){
+			count++;
+			p_rankNo = this.ds_rankList.getColumn(i,'RANK_NO');
+			p_rankNoStr += p_rankNo + ",";
+		}
+	}
+	if(count == 0 ) {
+		alert("삭제할 행을 1개 이상 선택하시오.");
+		return;
+	}
+	//아래 코드의 의미는?
+	if(p_rankNoStr.length>1){
+		p_rankNoStr = p_rankNoStr.substring(0,p_rankNoStr.length-1);
+	}
+	//alert("p_deptNoStr : "+p_deptNoStr);
+	this.transaction("rankDelete" ,"SvcURL::hr/rankDelete.psp","" ,"ds_rankList=out_rankList" ,"p_rankNoStr="+p_rankNoStr ,"fn_callback");
+};
+
+this.div_rank_btn_rank_name_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("검색버튼 클릭");
+	var p_rkName = this.div_rank.form.ed_rkName.value;
+	
+	//alert("입력한 직급 : " + p_rkName);	
+	this.transaction("rankSelect" ,"SvcURL::hr/rankSelect.psp?p_rkName="+p_rkName ,"in_rankList=ds_rankList" ,"ds_rankList=out_rankList" ,"" ,"fn_callback");	
+};
+
+// 비동기 통신 결과를 받을 콜백 함수 지정 
+this.fn_callback = function(svcID, errCD, errMSG) { 
+	//alert("fn_callback호출 성공"+svcID+","+errCD+","+errMSG);
+	if(errCD < 0){ 
+		this.alert("Error: " + errMSG); 
+		return; 
+	}
+	if(svcID == "rankSelect"){
+		//this.alert("Select Success");
+	}
+}
+
+this.Form_rank_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var objApp = nexacro.getApplication();
+	var objDs = objApp.gb_login;
+	
+	//alert("사원이름 : " + objDs.getColumn(0,2)); // var로 선언한 변수명을 통해 데이터셋에 접근 가능.
+	//alert("부서이름 : " + objDs.getColumn(0,3));
+};
+]]></Script>
+  </Form>
+</FDL>
